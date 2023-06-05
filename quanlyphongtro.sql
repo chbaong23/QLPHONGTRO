@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 01, 2023 lúc 04:45 PM
--- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 8.2.0
+-- Host: localhost:3306
+-- Generation Time: Jun 05, 2023 at 11:32 PM
+-- Server version: 8.0.30
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,25 +18,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `quanlyphongtro`
+-- Database: `quanlyphongtro`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `administrative_regions`
+-- Table structure for table `administrative_regions`
 --
 
 CREATE TABLE `administrative_regions` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `name_en` varchar(255) NOT NULL,
   `code_name` varchar(255) DEFAULT NULL,
   `code_name_en` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `administrative_regions`
+-- Dumping data for table `administrative_regions`
 --
 
 INSERT INTO `administrative_regions` (`id`, `name`, `name_en`, `code_name`, `code_name_en`) VALUES
@@ -52,21 +52,21 @@ INSERT INTO `administrative_regions` (`id`, `name`, `name_en`, `code_name`, `cod
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `administrative_units`
+-- Table structure for table `administrative_units`
 --
 
 CREATE TABLE `administrative_units` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `full_name` varchar(255) DEFAULT NULL,
   `full_name_en` varchar(255) DEFAULT NULL,
   `short_name` varchar(255) DEFAULT NULL,
   `short_name_en` varchar(255) DEFAULT NULL,
   `code_name` varchar(255) DEFAULT NULL,
   `code_name_en` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `administrative_units`
+-- Dumping data for table `administrative_units`
 --
 
 INSERT INTO `administrative_units` (`id`, `full_name`, `full_name_en`, `short_name`, `short_name_en`, `code_name`, `code_name_en`) VALUES
@@ -84,45 +84,44 @@ INSERT INTO `administrative_units` (`id`, `full_name`, `full_name_en`, `short_na
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `booking_information`
+-- Table structure for table `booking_information`
 --
 
 CREATE TABLE `booking_information` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `rooms_id` int(10) UNSIGNED NOT NULL,
-  `message` text NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `name` varchar(255) NOT NULL,
-  `phone` varchar(255) NOT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `rooms_id` int UNSIGNED NOT NULL,
+  `message` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `booking_information`
+-- Dumping data for table `booking_information`
 --
 
 INSERT INTO `booking_information` (`id`, `rooms_id`, `message`, `email`, `name`, `phone`, `created_at`, `updated_at`) VALUES
-(12, 34, 'EM muốn đặt phòng', 'haitiger.vd@gmail.com', 'Phạm Quang Minh', '3262626493', '2023-03-15 23:43:22', '2023-03-15 23:43:22'),
-(13, 36, 'a', 'haitiger.al@gmail.com', 'Trần Văn Hải', '0372312809', '2023-03-23 22:37:37', '2023-03-23 22:37:37');
+(14, 41, 'Em muốn thuê phòng', 'testdemo@gmail.com', 'Test Demo', '333451510', '2023-06-05 16:30:28', '2023-06-05 16:30:28');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category_news`
+-- Table structure for table `category_news`
 --
 
 CREATE TABLE `category_news` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `description` text NOT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `category_news`
+-- Dumping data for table `category_news`
 --
 
 INSERT INTO `category_news` (`id`, `name`, `slug`, `description`, `created_at`, `updated_at`) VALUES
@@ -131,20 +130,20 @@ INSERT INTO `category_news` (`id`, `name`, `slug`, `description`, `created_at`, 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category_rooms`
+-- Table structure for table `category_rooms`
 --
 
 CREATE TABLE `category_rooms` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `description` text NOT NULL,
-  `image` varchar(255) NOT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `category_rooms`
+-- Dumping data for table `category_rooms`
 --
 
 INSERT INTO `category_rooms` (`id`, `name`, `description`, `image`, `created_at`, `updated_at`) VALUES
@@ -157,59 +156,45 @@ INSERT INTO `category_rooms` (`id`, `name`, `description`, `image`, `created_at`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment_news`
+-- Table structure for table `comment_news`
 --
 
 CREATE TABLE `comment_news` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `news_id` int(10) UNSIGNED NOT NULL,
-  `author_id` int(10) UNSIGNED NOT NULL,
-  `content` text NOT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `news_id` int UNSIGNED NOT NULL,
+  `author_id` int UNSIGNED NOT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `comment_news`
---
-
-INSERT INTO `comment_news` (`id`, `news_id`, `author_id`, `content`, `created_at`, `updated_at`) VALUES
-(5, 2, 2, 'Bài viết rất hay ạ 💕💕💕', '2023-03-29 00:39:27', '2023-03-29 00:39:27'),
-(6, 3, 2, 'Bài viết hay quá', '2023-03-29 00:54:12', '2023-03-29 00:54:12'),
-(7, 3, 5, 'Cảm ơn tác giả', '2023-03-29 01:28:46', '2023-03-29 01:28:46');
-
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment_rooms`
+-- Table structure for table `comment_rooms`
 --
 
 CREATE TABLE `comment_rooms` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `rooms_id` int(10) UNSIGNED NOT NULL,
-  `author_id` int(10) UNSIGNED NOT NULL,
-  `content` text NOT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `rooms_id` int UNSIGNED NOT NULL,
+  `author_id` int UNSIGNED NOT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `comment_rooms`
+-- Dumping data for table `comment_rooms`
 --
 
 INSERT INTO `comment_rooms` (`id`, `rooms_id`, `author_id`, `content`, `created_at`, `updated_at`) VALUES
-(3, 34, 4, 'Phòng trọ này mình đã qua và thấy rất đẹp nha mọi người', '2023-03-23 03:20:30', '2023-03-23 03:20:30'),
-(4, 37, 5, 'Phòng này chung chủ an toàn lắm nha mọi người', '2023-03-23 08:19:39', '2023-03-23 08:19:39'),
-(5, 36, 5, 'Phòng này liệu gần trường Ngoại ngữ không nhỉ', '2023-03-23 08:21:35', '2023-03-23 08:21:35'),
-(6, 36, 4, 'Đi tầm 10p nha bạn', '2023-03-23 08:23:48', '2023-03-23 08:23:48'),
-(7, 40, 6, 'huhu', '2023-03-24 03:44:39', '2023-03-24 03:44:39'),
-(8, 34, 2, 'abc', '2023-04-18 10:53:26', '2023-04-18 10:53:26'),
-(9, 43, 9, 'Quá Ok', '2023-05-01 01:28:33', '2023-05-01 01:28:33');
+(9, 41, 2, 'phòng quá vip', '2023-06-05 06:59:23', '2023-06-05 06:59:23'),
+(10, 37, 9, 'Phòng quá vip', '2023-06-05 16:28:32', '2023-06-05 16:28:32');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `districts`
+-- Table structure for table `districts`
 --
 
 CREATE TABLE `districts` (
@@ -220,11 +205,11 @@ CREATE TABLE `districts` (
   `full_name_en` varchar(255) DEFAULT NULL,
   `code_name` varchar(255) DEFAULT NULL,
   `province_code` varchar(20) DEFAULT NULL,
-  `administrative_unit_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `administrative_unit_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `districts`
+-- Dumping data for table `districts`
 --
 
 INSERT INTO `districts` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `province_code`, `administrative_unit_id`) VALUES
@@ -938,36 +923,36 @@ INSERT INTO `districts` (`code`, `name`, `name_en`, `full_name`, `full_name_en`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `failed_jobs`
+-- Table structure for table `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `id` bigint UNSIGNED NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `menus`
+-- Table structure for table `menus`
 --
 
 CREATE TABLE `menus` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `location` varchar(255) NOT NULL,
-  `parent_id` int(10) UNSIGNED NOT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `location` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `parent_id` int UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `menus`
+-- Dumping data for table `menus`
 --
 
 INSERT INTO `menus` (`id`, `name`, `location`, `parent_id`, `created_at`, `updated_at`) VALUES
@@ -984,17 +969,17 @@ INSERT INTO `menus` (`id`, `name`, `location`, `parent_id`, `created_at`, `updat
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `migrations`
+-- Table structure for table `migrations`
 --
 
 CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
-  `batch` int(11) NOT NULL
+  `id` int UNSIGNED NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `migrations`
+-- Dumping data for table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -1019,27 +1004,27 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `news`
+-- Table structure for table `news`
 --
 
 CREATE TABLE `news` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `slug` varchar(255) NOT NULL,
-  `category_id` int(10) UNSIGNED DEFAULT NULL,
-  `author_id` int(10) UNSIGNED NOT NULL,
-  `content` longtext NOT NULL,
-  `short_content` text NOT NULL,
-  `thumbnail` varchar(255) NOT NULL,
-  `key_words` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`key_words`)),
-  `view` int(11) NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
+  `id` int UNSIGNED NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category_id` int UNSIGNED DEFAULT NULL,
+  `author_id` int UNSIGNED NOT NULL,
+  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `short_content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `thumbnail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `key_words` json NOT NULL,
+  `view` int NOT NULL,
+  `status` int NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `news`
+-- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `slug`, `category_id`, `author_id`, `content`, `short_content`, `thumbnail`, `key_words`, `view`, `status`, `created_at`, `updated_at`) VALUES
@@ -1050,61 +1035,54 @@ INSERT INTO `news` (`id`, `title`, `slug`, `category_id`, `author_id`, `content`
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `notifications`
+-- Table structure for table `notifications`
 --
 
 CREATE TABLE `notifications` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `status` int(11) NOT NULL,
-  `link` varchar(255) NOT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `user_id` int UNSIGNED NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int NOT NULL,
+  `link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `notifications`
+-- Dumping data for table `notifications`
 --
 
 INSERT INTO `notifications` (`id`, `user_id`, `title`, `status`, `link`, `created_at`, `updated_at`) VALUES
-(12, 2, 'Phòng trọ của bạn đã bị hệ thống ẩn bởi thông tin không đúng, đủ', 1, 'http://phongtro20.test/Room/Room?28', '2023-03-15 09:51:35', '2023-03-15 09:53:08'),
-(13, 2, 'Phòng trọ của bạn đã bị hệ thống ẩn bởi thông tin không đúng, đủ', 1, 'http://phongtro20.test/Room/28', '2023-03-15 09:52:59', '2023-03-15 09:53:53'),
-(14, 2, 'Phòng trọ của bạn đã bị hệ thống ẩn bởi thông tin không đúng, đủ', 1, 'http://phongtro20.test/Room/28', '2023-03-15 09:54:34', '2023-03-15 09:55:09'),
-(15, 2, 'Phòng trọ của bạn đã bị hệ thống ẩn bởi thông tin không đúng, đủ', 1, 'http://phongtro20.test/Room/29', '2023-03-15 09:57:03', '2023-03-15 10:18:46'),
-(16, 2, 'Phòng trọ Phòng trọ gần siêu thị Go của bạn đã bị hệ thống xóa bởi có nhiều sai phạm', 1, 'http://phongtro20.test/user', '2023-03-15 10:09:51', '2023-03-15 10:10:32'),
-(25, 4, 'Tài khoản của bạn được cập nhật thông tin bởi quản trị viên với lý do: Tên quá cute', 0, 'https://phongtro20.test/user', '2023-03-24 02:38:15', '2023-03-24 02:38:15'),
-(27, 4, 'Phòng trọ của bạn có một bình luận mới', 0, 'https://6861-2405-4800-756c-607b-895a-dc2f-709-9dbf.ap.ngrok.io/xem-phong/40', '2023-03-24 03:44:39', '2023-03-24 03:44:39'),
-(38, 7, 'Quản trị viên: Nick bạn sắp bị khóa rồi', 0, 'https://136c-2405-4802-219d-7370-c181-d9c0-1415-553d.ap.ngrok.io/user', '2023-04-01 20:07:04', '2023-04-01 20:07:04'),
-(39, 7, 'Phòng trọ của bạn đã bị hệ thống ẩn bởi thông tin không đúng, đủ', 0, 'https://136c-2405-4802-219d-7370-c181-d9c0-1415-553d.ap.ngrok.io/Room/42', '2023-04-01 20:13:12', '2023-04-01 20:13:12'),
-(41, 8, 'Phòng trọ của bạn có một bình luận mới', 0, 'http://127.0.0.1:8000/xem-phong/43', '2023-05-01 01:28:33', '2023-05-01 01:28:33');
+(41, 8, 'Tài khoản của bạn được cập nhật thông tin bởi quản trị viên với lý do: zzz', 0, 'http://127.0.0.1:8000/user', '2023-06-05 06:21:08', '2023-06-05 06:21:08'),
+(42, 2, 'Phòng trọ của bạn có một bình luận mới', 0, 'http://127.0.0.1:8000/xem-phong/41', '2023-06-05 06:59:24', '2023-06-05 06:59:24'),
+(43, 2, 'Quản trị viên: alo 1234', 0, 'http://127.0.0.1:8000/user', '2023-06-05 07:01:41', '2023-06-05 07:01:41');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_resets`
+-- Table structure for table `password_resets`
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `password_reset_tokens`
+-- Table structure for table `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `password_reset_tokens`
+-- Dumping data for table `password_reset_tokens`
 --
 
 INSERT INTO `password_reset_tokens` (`email`, `token`, `created_at`) VALUES
@@ -1113,16 +1091,16 @@ INSERT INTO `password_reset_tokens` (`email`, `token`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `personal_access_tokens`
+-- Table structure for table `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
+  `id` bigint UNSIGNED NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_id` bigint UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1132,7 +1110,7 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `provinces`
+-- Table structure for table `provinces`
 --
 
 CREATE TABLE `provinces` (
@@ -1142,12 +1120,12 @@ CREATE TABLE `provinces` (
   `full_name` varchar(255) NOT NULL,
   `full_name_en` varchar(255) DEFAULT NULL,
   `code_name` varchar(255) DEFAULT NULL,
-  `administrative_unit_id` int(11) DEFAULT NULL,
-  `administrative_region_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `administrative_unit_id` int DEFAULT NULL,
+  `administrative_region_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `provinces`
+-- Dumping data for table `provinces`
 --
 
 INSERT INTO `provinces` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `administrative_unit_id`, `administrative_region_id`) VALUES
@@ -1218,73 +1196,72 @@ INSERT INTO `provinces` (`code`, `name`, `name_en`, `full_name`, `full_name_en`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `rooms`
+-- Table structure for table `rooms`
 --
 
 CREATE TABLE `rooms` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `status` int(10) UNSIGNED DEFAULT NULL,
-  `chutro_id` int(10) UNSIGNED NOT NULL,
-  `category_id` int(10) UNSIGNED DEFAULT NULL,
-  `main_img` varchar(255) NOT NULL,
-  `list_img` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`list_img`)),
-  `video_link` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL,
-  `electric` int(11) NOT NULL,
-  `water` int(11) NOT NULL,
-  `area` int(11) NOT NULL,
-  `describe_room` text NOT NULL,
-  `unit` varchar(255) NOT NULL,
-  `quantity` int(11) NOT NULL,
-  `add_ons` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`add_ons`)),
-  `detail_address` varchar(255) DEFAULT NULL,
-  `latlng` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`latlng`)),
-  `ward_id` varchar(20) DEFAULT NULL,
+  `id` int UNSIGNED NOT NULL,
+  `name` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` int UNSIGNED DEFAULT NULL,
+  `chutro_id` int UNSIGNED NOT NULL,
+  `category_id` int UNSIGNED DEFAULT NULL,
+  `main_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `list_img` json DEFAULT NULL,
+  `video_link` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `price` int NOT NULL,
+  `electric` int NOT NULL,
+  `water` int NOT NULL,
+  `area` int NOT NULL,
+  `describe_room` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `unit` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `quantity` int NOT NULL,
+  `add_ons` json DEFAULT NULL,
+  `detail_address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `latlng` json DEFAULT NULL,
+  `ward_id` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `rooms`
+-- Dumping data for table `rooms`
 --
 
 INSERT INTO `rooms` (`id`, `name`, `status`, `chutro_id`, `category_id`, `main_img`, `list_img`, `video_link`, `price`, `electric`, `water`, `area`, `describe_room`, `unit`, `quantity`, `add_ons`, `detail_address`, `latlng`, `ward_id`, `created_at`, `updated_at`) VALUES
-(33, 'Khu trọ TN', 0, 2, 2, 'anh_phong_id_331678902264881330951435_1810949992623277_6205861318386352961_n.jpg', '[\"anh_phong_id_331678902267004330224762_888038288915187_3613881309069429644_n.jpg\", \"anh_phong_id_331678902269508331136788_655535929714129_2769754085826986127_n.jpg\"]', '', 600000, 3500, 12000, 20, '<p>Trống 3 ph&ograve;ng trọ</p>\n\n<p>Nh&agrave; số 6 ,ng&aacute;ch 83 ,ng&otilde; 206 , đường minh cầu</p>\n\n<p>Ph&ograve;ng n&oacute;ng lạnh 700k , ph&ograve;ng ko n&oacute;ng lạnh 600k</p>\n\n<p>Nước 12k , điện 3,5k</p>\n\n<p>C&oacute; cổng ri&ecirc;ng , chủ nh&agrave; dễ t&iacute;nh rộng 20m</p>\n\n<p>An ninh tốt</p>\n\n<p>Alo B&aacute;c Chuyện : 0384203674</p>', '1 Tháng', 3, '[\"Camera an ninh\"]', 'Nhà số 6 ,ngách 83,  Đường Minh Cầu, Phường Phan Đình Phùng, Thái Nguyên, Thai Nguyen 24124, Vietnam', '{\"lat\": \"21.59033126715488\", \"long\": \"105.83668581681229\"}', '05449', '2023-03-15 10:41:11', '2023-05-01 01:31:29'),
-(34, 'Xóm trọ Bình Nguyên', 1, 2, 2, 'anh_phong_id_341678902399899329511382_873766237069246_7954422392535907684_n.jpg', '[\"anh_phong_id_341678902402211329667841_6090888790931207_6033659360100784102_n.jpg\", \"anh_phong_id_341678902405966328353759_1543074029549463_2184277739110460285_n.jpg\", \"anh_phong_id_341678902408129329173819_1202244003996770_6055762997136518296_n.jpg\", \"anh_phong_id_341678902410770329331233_3353139061603191_347461878677675502_n.jpg\"]', '', 1000000, 3000, 10000, 15, '<p>X&oacute;m trọ B&igrave;nh Nguy&ecirc;n c&ograve;n ph&ograve;ng trống</p>\n\n<p>Địa chỉ cầu chui sơn tiến cạnh xưởng gỗ</p>\n\n<p>Wifi Điều h&ograve;a n&oacute;ng lạnh c&oacute; đủ</p>\n\n<p>C&aacute;ch cntt 3p đi lại, ace n&agrave;o muốn xem ib m&igrave;nh nh&eacute;</p>\n\n<p>Sđt chủ trọ: 0987886420</p>\n\n<p>Ưu ti&ecirc;n nam nữ biết uống rượu chắc sẽ được giảm tiền nước ạ</p>', '1 Tháng', 5, '[\"Điều hòa\", \"Bình nóng lạnh\"]', 'cầu chui sơn tiến cạnh xưởng gỗ , Đường Quốc Lộ 3, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam', '{\"lat\": \"21.584183057059533\", \"long\": \"105.80256207938065\"}', '05491', '2023-03-15 10:45:37', '2023-03-15 10:47:03'),
-(35, 'phòng trọ gần cntt', 1, 2, 2, 'anh_phong_id_351678902568178316825870_1515545685590279_7408312984311928956_n.jpg', '[\"anh_phong_id_351678902555680316952382_1515545755590272_4955764621279176914_n.jpg\", \"anh_phong_id_351678902558370316944799_1515545812256933_78535849633923067_n.jpg\", \"anh_phong_id_351678902560924317073958_1515547085590139_4440903857553627508_n.jpg\", \"anh_phong_id_351678902565311316958885_1515545722256942_4661674121695251830_n.jpg\"]', '', 1500000, 3500, 50000, 15, '<p>X&oacute;m c&ograve;n một ph&ograve;ng trọ gần cntt( cầu trui sơn tiến rẽ tr&aacute;i)</p>\n\n<p>Tiền ph&ograve;ng:1tr5</p>\n\n<p>Điện:3,5k/1 số</p>\n\n<p>NƯớc 50k 1 người</p>\n\n<p>Đầy đủ tiện nghi tủ bếp h&uacute;t m&ugrave;i điều ho&agrave; n&oacute;ng lạnh ph&ograve;ng ngủ ri&ecirc;ng ph&ograve;ng bếp ri&ecirc;ng. Chỉ chủ dễ t&iacute;nh</p>\n\n<p>Ưu ti&ecirc;n ở l&acirc;u d&agrave;i.</p>', '1 Tháng', 3, '[\"Điều hòa\", \"Bình nóng lạnh\"]', 'cầu trui sơn tiến rẽ trái,  Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam', '{\"lat\": \"21.585680004163834\", \"long\": \"105.80116021536334\"}', '05491', '2023-03-15 10:47:56', '2023-03-15 10:49:45'),
-(36, 'Khu trọ Cntt', 1, 4, 2, 'anh_phong_id_361679470034895335423522_446827434296613_1975633544487050754_n.jpg', '[\"anh_phong_id_361679470037682335440751_1226014521363189_4169501191481616733_n.jpg\", \"anh_phong_id_361679470040475335435590_766774155176351_3548974381306202785_n.jpg\"]', '', 1300000, 3500, 15000, 15, '<p>Em pass ph&ograve;ng trọ 1tr3 c&aacute;ch cntt 50m ạ</p>\n\n<p>Điện 3,5k</p>\n\n<p>Nước 15k</p>', '1 Tháng', 5, '[\"Nơi để xe\", \"Điều hòa\", \"Bình nóng lạnh\"]', '151, Đường Lý Nam Đế, Phổ Yên, Phổ Yên, Thai Nguyen 24723, Vietnam', '{\"lat\": \"21.41294249943506\", \"long\": \"105.87960535425788\"}', '05872', '2023-03-22 00:26:32', '2023-03-22 00:30:01'),
-(37, 'Nhà số 6 ,ngách 83 ,ngõ 206 , đường minh cầu', 1, 2, 1, 'anh_phong_id_371679516342610330951435_1810949992623277_6205861318386352961_n.jpg', '[\"anh_phong_id_371679516346366330224762_888038288915187_3613881309069429644_n.jpg\", \"anh_phong_id_371679516348806331136788_655535929714129_2769754085826986127_n.jpg\"]', '', 700000, 3500, 12000, 17, '<p>Trống 3 ph&ograve;ng trọ</p>\n\n<p>Nh&agrave; số 6 ,ng&aacute;ch 83 ,ng&otilde; 206 , đường minh cầu</p>\n\n<p>Ph&ograve;ng n&oacute;ng lạnh 700k , ph&ograve;ng ko n&oacute;ng lạnh 600k</p>\n\n<p>Nước 12k , điện 3,5k</p>\n\n<p>C&oacute; cổng ri&ecirc;ng , chủ nh&agrave; dễ t&iacute;nh rộng 20m</p>\n\n<p>An ninh tốt</p>\n\n<p>Alo B&aacute;c Chuyện : 0384203674</p>', '1 Tháng', 3, '[\"Camera an ninh\"]', 'Nhà số 6 ,ngách 83 ,ngõ 206, Phường Phan Đình Phùng, Thái Nguyên, Thai Nguyen 24124, Vietnam', '{\"lat\": \"21.58945044364725\", \"long\": \"105.8375250385699\"}', '05449', '2023-03-22 13:17:48', '2023-03-22 13:19:26'),
-(38, 'GÓC THUÊ PHÒNG TRọ SIÊU RẺ ĐẸP CÓ TÂM', 1, 2, 2, 'anh_phong_id_381679516447212298938897_572953181087384_2044731136017629575_n.jpg', '[\"anh_phong_id_381679516450370298732428_572953207754048_4228371924487330332_n.jpg\", \"anh_phong_id_381679516452781298033319_572953021087400_1746789255999966788_n.jpg\", \"anh_phong_id_381679516456453298710808_572952954420740_3580035005108856672_n.jpg\"]', '', 400000, 3000, 5000, 22, '<p>G&Oacute;C THU&Ecirc; PH&Ograve;NG TRọ SI&Ecirc;U RẺ ĐẸP C&Oacute; T&Acirc;M</p>\n\n<p>D&atilde;y 15 ph&ograve;ng , c&ograve;n trống 3 ph&ograve;ng</p>\n\n<p><img alt=\"❤\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tf3/1.5/16/2764.png\" style=\"height:16px; width:16px\" /> Ngay s&aacute;t khu trọ Nh&agrave; Việt</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> Sạch sẽ, rộng r&atilde;i</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> M&aacute;t mẻ, c&oacute; vườn rau ở s&acirc;n nh&agrave; b&aacute;c chủ trồng</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> Mỗi ph&ograve;ng 1 ch&igrave;a kh&oacute;a cổng, an ninh th&igrave; si&ecirc;u tốt</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> Kh&ocirc;ng quy định thời gian, bạn b&egrave; ngủ lại thoải m&aacute;i</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> S&acirc;n h&agrave;nh lang rộng tha hồ để xe</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> B&aacute;c chủ c&ocirc;ng chức về hưu, lịch sự, gần gũi</p>\n\n<p><img alt=\"🏡\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/td0/1.5/16/1f3e1.png\" style=\"height:16px; width:16px\" /> Địa điểm: Khu ĐH CNTT , gần Khoa Học .</p>\n\n<p>Th&iacute;ch hợp cho: SV CNTT, SV Khoa Học, Ngoại Ngữ.</p>\n\n<p><img alt=\"🛑\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tf4/1.5/16/1f6d1.png\" style=\"height:16px; width:16px\" /> Gi&aacute; chỉ 400k -&gt; 1ph&ograve;ng, Điện theo gi&aacute; nh&agrave; nước 3k/1số, Nước 5k/khối .</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> C&ograve;n 2 ph&ograve;ng. LH m&igrave;nh ib</p>', '1 Tháng', 3, '[\"Nơi để xe\", \"Camera an ninh\", \"Điều hòa\", \"Bình nóng lạnh\"]', '78, Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam', '{\"lat\": \"21.58840468777862\", \"long\": \"105.80670330685794\"}', '05431', '2023-03-22 13:20:14', '2023-03-22 13:21:17'),
-(40, 'Khu trọ gần trường sư phạm', 1, 4, 2, 'anh_phong_id_401679637185993335066936_152900067649755_6547219113769747714_n.jpg', '[\"anh_phong_id_401679637188525335034908_903537450865018_564884506429075202_n.jpg\", \"anh_phong_id_401679637191277335049064_750175513365159_6966913908981511507_n.jpg\"]', '', 1500000, 3500, 20000, 23, '<p>X&oacute;m trọ m&igrave;nh c&ograve;n 1 ph&ograve;ng như h&igrave;nh</p>\n\n<p>Ph&ograve;ng kh&eacute;p k&iacute;n c&oacute; đủ điều ho&agrave; n&oacute;ng lạnh</p>\n\n<p>Kệ bếp nấu ăn</p>\n\n<p>C&oacute; s&acirc;n để xe rộng r&atilde;i,camera gi&aacute;m s&aacute;t</p>\n\n<p>X&oacute;m tự quản</p>\n\n<p>B n&agrave;o c&oacute; nhu cầu xem ph&ograve;ng li&ecirc;n hệ qua sđt</p>\n\n<p>0985970898</p>\n\n<p>Đc : nh&agrave; 9b ng&otilde; 80 lương thế vinh</p>', '1 Tháng', 1, '[\"Camera an ninh\", \"Điều hòa\", \"Bình nóng lạnh\"]', 'Đường Lương Thế Vinh, Phường Quang Trung, Thái Nguyên, Thai Nguyen 24117, Vietnam', '{\"lat\": \"21.59786374702655\", \"long\": \"105.81817634845862\"}', '05446', '2023-03-23 22:52:34', '2023-03-23 22:53:22'),
-(41, 'căn 2 ngủ tại Tecco Đán, Thịnh Đán, Thái Nguyên', 1, 2, 3, 'anh_phong_id_41167989275771120230323083714-8ccb_wm.jpg', '[\"anh_phong_id_41167989276611020230323083714-bf1f_wm.jpg\"]', '', 5000000, 2500, 10000, 72, '<p>Mời thu&ecirc; căn 2 ngủ kh&ocirc;ng đồ tại Tecco Đ&aacute;n,<br />\nDiện t&iacute;ch 72 m&sup2; tầng trung.<br />\nGi&aacute; chỉ 5 triệu / th&aacute;ng.</p>', '1 Tháng', 1, '[\"Nơi để xe\", \"Camera an ninh\", \"Điều hòa\", \"Bình nóng lạnh\"]', 'Tecco Đán,  Đường Quang Trung, Phường Thịnh Đán, Thái Nguyên, Thai Nguyen 24122, Vietnam', '{\"lat\": \"21.575743860878006\", \"long\": \"105.81220821001254\"}', '05455', '2023-03-26 21:51:22', '2023-03-26 21:52:53'),
-(43, 'Khu trọ Hoàng Mạnh', 1, 8, 1, 'anh_phong_id_431681541454226337250451_1589221348211709_4387160587513179554_n.jpg', '[\"anh_phong_id_431681541457657337244198_6033566980044930_2315075271499993145_n.jpg\", \"anh_phong_id_431681541460052337295274_1276795642915111_7668646609031390169_n.jpg\"]', '', 1200000, 3000, 40000, 15, '<p>Xanh, sạch, đẹp</p>', '1 Tháng', 3, '[\"Nơi để xe\", \"Wifi miễn phí\"]', 'Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam', '{\"lat\": \"21.58801808391297\", \"long\": \"105.7960307105205\"}', '05491', '2023-04-14 23:50:06', '2023-04-14 23:51:08');
+(33, 'Khu trọ TPHCM', 1, 2, 2, 'anh_phong_id_331678902264881330951435_1810949992623277_6205861318386352961_n.jpg', '[\"anh_phong_id_331678902267004330224762_888038288915187_3613881309069429644_n.jpg\", \"anh_phong_id_331678902269508331136788_655535929714129_2769754085826986127_n.jpg\"]', NULL, 600000, 3500, 12000, 20, '<p>Trống 3 ph&ograve;ng trọ</p>\n\n<p>Nh&agrave; số 6 ,ng&aacute;ch 83 ,ng&otilde; 206 , đường minh cầu</p>\n\n<p>Ph&ograve;ng n&oacute;ng lạnh 700k , ph&ograve;ng ko n&oacute;ng lạnh 600k</p>\n\n<p>Nước 12k , điện 3,5k</p>\n\n<p>C&oacute; cổng ri&ecirc;ng , chủ nh&agrave; dễ t&iacute;nh rộng 20m</p>\n\n<p>An ninh tốt</p>\n\n<p>Alo B&aacute;c Chuyện : 0384203674</p>', '1 Tháng', 3, '[\"Camera an ninh\"]', '33 Vĩnh Viễn Phường 2 Quận 10 Vietnam', '{\"lat\": \"10.7648845\", \"long\": \"106.6708153\"}', '05449', '2023-03-15 10:41:11', '2023-03-15 10:44:41'),
+(34, 'Xóm trọ Vĩnh Viễn', 1, 2, 2, 'anh_phong_id_341678902399899329511382_873766237069246_7954422392535907684_n.jpg', '[\"anh_phong_id_341678902402211329667841_6090888790931207_6033659360100784102_n.jpg\", \"anh_phong_id_341678902405966328353759_1543074029549463_2184277739110460285_n.jpg\", \"anh_phong_id_341678902408129329173819_1202244003996770_6055762997136518296_n.jpg\", \"anh_phong_id_341678902410770329331233_3353139061603191_347461878677675502_n.jpg\"]', NULL, 1000000, 3000, 10000, 15, '<p>X&oacute;m trọ B&igrave;nh Nguy&ecirc;n c&ograve;n ph&ograve;ng trống</p>\n\n<p>Địa chỉ cầu chui sơn tiến cạnh xưởng gỗ</p>\n\n<p>Wifi Điều h&ograve;a n&oacute;ng lạnh c&oacute; đủ</p>\n\n<p>C&aacute;ch cntt 3p đi lại, ace n&agrave;o muốn xem ib m&igrave;nh nh&eacute;</p>\n\n<p>Sđt chủ trọ: 0987886420</p>\n\n<p>Ưu ti&ecirc;n nam nữ biết uống rượu chắc sẽ được giảm tiền nước ạ</p>', '1 Tháng', 5, '[\"Điều hòa\", \"Bình nóng lạnh\"]', '33 Vĩnh Viễn Phường 2 Quận 10 Vietnam', '{\"lat\": \"21.584183057059533\", \"long\": \"105.80256207938065\"}', '05491', '2023-03-15 10:45:37', '2023-03-15 10:47:03'),
+(35, 'Phòng trọ gần Ngô Gia Tự', 1, 2, 2, 'anh_phong_id_351678902568178316825870_1515545685590279_7408312984311928956_n.jpg', '[\"anh_phong_id_351678902555680316952382_1515545755590272_4955764621279176914_n.jpg\", \"anh_phong_id_351678902558370316944799_1515545812256933_78535849633923067_n.jpg\", \"anh_phong_id_351678902560924317073958_1515547085590139_4440903857553627508_n.jpg\", \"anh_phong_id_351678902565311316958885_1515545722256942_4661674121695251830_n.jpg\"]', NULL, 1500000, 3500, 50000, 15, '<p>X&oacute;m c&ograve;n một ph&ograve;ng trọ gần cntt( cầu trui sơn tiến rẽ tr&aacute;i)</p>\n\n<p>Tiền ph&ograve;ng:1tr5</p>\n\n<p>Điện:3,5k/1 số</p>\n\n<p>NƯớc 50k 1 người</p>\n\n<p>Đầy đủ tiện nghi tủ bếp h&uacute;t m&ugrave;i điều ho&agrave; n&oacute;ng lạnh ph&ograve;ng ngủ ri&ecirc;ng ph&ograve;ng bếp ri&ecirc;ng. Chỉ chủ dễ t&iacute;nh</p>\n\n<p>Ưu ti&ecirc;n ở l&acirc;u d&agrave;i.</p>', '1 Tháng', 3, '[\"Điều hòa\", \"Bình nóng lạnh\"]', '33 Vĩnh Viễn Phường 2 Quận 10 Vietnam', '{\"lat\": \"21.585680004163834\", \"long\": \"105.80116021536334\"}', '05491', '2023-03-15 10:47:56', '2023-03-15 10:49:45'),
+(36, 'Khu trọ Cntt', 1, 4, 2, 'anh_phong_id_361679470034895335423522_446827434296613_1975633544487050754_n.jpg', '[\"anh_phong_id_361679470037682335440751_1226014521363189_4169501191481616733_n.jpg\", \"anh_phong_id_361679470040475335435590_766774155176351_3548974381306202785_n.jpg\"]', NULL, 1300000, 3500, 15000, 15, '<p>Em pass ph&ograve;ng trọ 1tr3 c&aacute;ch cntt 50m ạ</p>\n\n<p>Điện 3,5k</p>\n\n<p>Nước 15k</p>', '1 Tháng', 5, '[\"Nơi để xe\", \"Điều hòa\", \"Bình nóng lạnh\"]', '151, Đường Lý Nam Đế, Phổ Yên, Phổ Yên, Thai Nguyen 24723, Vietnam', '{\"lat\": \"21.41294249943506\", \"long\": \"105.87960535425788\"}', '05872', '2023-03-22 00:26:32', '2023-03-22 00:30:01'),
+(37, '366 Vĩnh Viễn,P2.Q10', 1, 2, 1, 'anh_phong_id_371679516342610330951435_1810949992623277_6205861318386352961_n.jpg', '[\"anh_phong_id_371679516346366330224762_888038288915187_3613881309069429644_n.jpg\", \"anh_phong_id_371679516348806331136788_655535929714129_2769754085826986127_n.jpg\"]', NULL, 700000, 3500, 12000, 17, '<p>Trống 3 ph&ograve;ng trọ</p>\n\n<p>Nh&agrave; số 6 ,ng&aacute;ch 83 ,ng&otilde; 206 , đường minh cầu</p>\n\n<p>Ph&ograve;ng n&oacute;ng lạnh 700k , ph&ograve;ng ko n&oacute;ng lạnh 600k</p>\n\n<p>Nước 12k , điện 3,5k</p>\n\n<p>C&oacute; cổng ri&ecirc;ng , chủ nh&agrave; dễ t&iacute;nh rộng 20m</p>\n\n<p>An ninh tốt</p>\n\n<p>Alo B&aacute;c Chuyện : 0384203674</p>', '1 Tháng', 3, '[\"Camera an ninh\"]', '33 Vĩnh Viễn Phường 2 Quận 10 Vietnam', '{\"lat\": \"21.58945044364725\", \"long\": \"105.8375250385699\"}', '05449', '2023-03-22 13:17:48', '2023-03-22 13:19:26'),
+(38, 'PHÒNG TRỌ SIÊU CẤP VŨ TRỤ', 1, 2, 2, 'anh_phong_id_381679516447212298938897_572953181087384_2044731136017629575_n.jpg', '[\"anh_phong_id_381679516450370298732428_572953207754048_4228371924487330332_n.jpg\", \"anh_phong_id_381679516452781298033319_572953021087400_1746789255999966788_n.jpg\", \"anh_phong_id_381679516456453298710808_572952954420740_3580035005108856672_n.jpg\"]', NULL, 400000, 3000, 5000, 22, '<p>G&Oacute;C THU&Ecirc; PH&Ograve;NG TRọ SI&Ecirc;U RẺ ĐẸP C&Oacute; T&Acirc;M</p>\n\n<p>D&atilde;y 15 ph&ograve;ng , c&ograve;n trống 3 ph&ograve;ng</p>\n\n<p><img alt=\"❤\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tf3/1.5/16/2764.png\" style=\"height:16px; width:16px\" /> Ngay s&aacute;t khu trọ Nh&agrave; Việt</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> Sạch sẽ, rộng r&atilde;i</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> M&aacute;t mẻ, c&oacute; vườn rau ở s&acirc;n nh&agrave; b&aacute;c chủ trồng</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> Mỗi ph&ograve;ng 1 ch&igrave;a kh&oacute;a cổng, an ninh th&igrave; si&ecirc;u tốt</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> Kh&ocirc;ng quy định thời gian, bạn b&egrave; ngủ lại thoải m&aacute;i</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> S&acirc;n h&agrave;nh lang rộng tha hồ để xe</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> B&aacute;c chủ c&ocirc;ng chức về hưu, lịch sự, gần gũi</p>\n\n<p><img alt=\"🏡\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/td0/1.5/16/1f3e1.png\" style=\"height:16px; width:16px\" /> Địa điểm: Khu ĐH CNTT , gần Khoa Học .</p>\n\n<p>Th&iacute;ch hợp cho: SV CNTT, SV Khoa Học, Ngoại Ngữ.</p>\n\n<p><img alt=\"🛑\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/tf4/1.5/16/1f6d1.png\" style=\"height:16px; width:16px\" /> Gi&aacute; chỉ 400k -&gt; 1ph&ograve;ng, Điện theo gi&aacute; nh&agrave; nước 3k/1số, Nước 5k/khối .</p>\n\n<p><img alt=\"👉\" src=\"https://static.xx.fbcdn.net/images/emoji.php/v9/taa/1.5/16/1f449.png\" style=\"height:16px; width:16px\" /> C&ograve;n 2 ph&ograve;ng. LH m&igrave;nh ib</p>', '1 Tháng', 3, '[\"Nơi để xe\", \"Camera an ninh\", \"Điều hòa\", \"Bình nóng lạnh\"]', '33 Vĩnh Viễn Phường 2 Quận 10 Vietnam', '{\"lat\": \"21.58840468777862\", \"long\": \"105.80670330685794\"}', '05431', '2023-03-22 13:20:14', '2023-03-22 13:21:17'),
+(40, 'Khu trọ gần trường sư phạm', 1, 4, 2, 'anh_phong_id_401679637185993335066936_152900067649755_6547219113769747714_n.jpg', '[\"anh_phong_id_401679637188525335034908_903537450865018_564884506429075202_n.jpg\", \"anh_phong_id_401679637191277335049064_750175513365159_6966913908981511507_n.jpg\"]', NULL, 1500000, 3500, 20000, 23, '<p>X&oacute;m trọ m&igrave;nh c&ograve;n 1 ph&ograve;ng như h&igrave;nh</p>\n\n<p>Ph&ograve;ng kh&eacute;p k&iacute;n c&oacute; đủ điều ho&agrave; n&oacute;ng lạnh</p>\n\n<p>Kệ bếp nấu ăn</p>\n\n<p>C&oacute; s&acirc;n để xe rộng r&atilde;i,camera gi&aacute;m s&aacute;t</p>\n\n<p>X&oacute;m tự quản</p>\n\n<p>B n&agrave;o c&oacute; nhu cầu xem ph&ograve;ng li&ecirc;n hệ qua sđt</p>\n\n<p>0985970898</p>\n\n<p>Đc : nh&agrave; 9b ng&otilde; 80 lương thế vinh</p>', '1 Tháng', 1, '[\"Camera an ninh\", \"Điều hòa\", \"Bình nóng lạnh\"]', '33 Vĩnh Viễn Phường 2 Quận 10 Vietnam', '{\"lat\": \"21.59786374702655\", \"long\": \"105.81817634845862\"}', '05446', '2023-03-23 22:52:34', '2023-03-23 22:53:22'),
+(41, 'Căn 2 phòng ngủ cực vip và chất lượng', 1, 2, 3, 'anh_phong_id_41167989275771120230323083714-8ccb_wm.jpg', '[\"anh_phong_id_41167989276611020230323083714-bf1f_wm.jpg\"]', NULL, 5000000, 2500, 10000, 72, '<p>Mời thu&ecirc; căn 2 ngủ kh&ocirc;ng đồ tại Tecco Đ&aacute;n,<br />\nDiện t&iacute;ch 72 m&sup2; tầng trung.<br />\nGi&aacute; chỉ 5 triệu / th&aacute;ng.</p>', '1 Tháng', 1, '[\"Nơi để xe\", \"Camera an ninh\", \"Điều hòa\", \"Bình nóng lạnh\"]', '33 Vĩnh Viễn Phường 2 Quận 10 Vietnam', '{\"lat\": \"21.575743860878006\", \"long\": \"105.81220821001254\"}', '05455', '2023-03-26 21:51:22', '2023-03-26 21:52:53');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `sessions`
+-- Table structure for table `sessions`
 --
 
 CREATE TABLE `sessions` (
-  `id` varchar(255) NOT NULL,
-  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `ip_address` varchar(45) DEFAULT NULL,
-  `user_agent` text DEFAULT NULL,
-  `payload` longtext NOT NULL,
-  `last_activity` int(11) NOT NULL
+  `id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` bigint UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_agent` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `last_activity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `setting_fields`
+-- Table structure for table `setting_fields`
 --
 
 CREATE TABLE `setting_fields` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `content` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`content`)),
+  `id` int UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` json NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -1292,48 +1269,48 @@ CREATE TABLE `setting_fields` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `role` varchar(255) DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
+  `id` int UNSIGNED NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` int NOT NULL DEFAULT '1',
   `block_at` timestamp NULL DEFAULT NULL,
-  `address` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`address`)),
-  `PhoneNumber` varchar(255) DEFAULT NULL,
-  `Zalo` varchar(255) DEFAULT NULL,
-  `Facebook` varchar(255) DEFAULT NULL,
-  `email` varchar(255) NOT NULL,
+  `address` json DEFAULT NULL,
+  `PhoneNumber` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Zalo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Facebook` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
-  `current_team_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `profile_photo_path` varchar(2048) DEFAULT NULL,
-  `description` text DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `current_team_id` bigint UNSIGNED DEFAULT NULL,
+  `profile_photo_path` varchar(2048) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `role`, `status`, `block_at`, `address`, `PhoneNumber`, `Zalo`, `Facebook`, `email`, `email_verified_at`, `password`, `remember_token`, `current_team_id`, `profile_photo_path`, `description`, `created_at`, `updated_at`) VALUES
-(2, 'Nguyễn Thành Trung', '1', 1, NULL, '{\"province\":\"TP H\\u1ed3 Ch\\u00ed Minh\",\"wards\":\"Qu\\u1eadn B\\u00ecnh Th\\u1ea1nh\",\"address\":\"\\u0110\\u01b0\\u1eddng \\u0110i\\u1ec7n Bi\\u00ean Ph\\u1ee7 525A\",\"lat\":\"21.587515243878784\",\"long\":\"105.80429915130111\"}', '0343754517', '0343754517', 'https://www.facebook.com/', 'admin@gmail.com', NULL, '$2y$10$sFfA5sO9HhaI51KaYFfLwun99gv0g2DquNJyDcQnQnz6jhqn1AX6S', 'grR4vvNYCWobP2gWjALWsjCILALV0sLjo1ynJJ54XpIx099aC2dKCJE8YtLi', NULL, 'tran-van-hai1678701953424314490579_2134404393432870_5429437796914280200_n.jpg', '<p>hello</p>', '2023-03-10 09:33:38', '2023-05-01 01:03:52'),
-(3, 'Ông Độ', '0', 1, NULL, '{\"lat\": \"21.580819536144475\", \"long\": \"105.80625425570588\", \"wards\": \"Thái Nguyên\", \"address\": \"21, Ngõ 167 Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam\", \"province\": \"Thai Nguyen\"}', '0372312809', '0356627865', 'https://www.facebook.com/messages/t/100010477203366', 'doquyetthang1960@gmail.com', NULL, '$2y$10$zIjSXzsOUdR1.Dzc/uNG9OTzgJ9ENiD4KuvxC/ThDz8uV2aAVdWjq', NULL, NULL, 'ong-do1678545911608Hinh-anh-hinh-nen-Sylas.jpg', '<p>aaaaa</p>', '2023-03-11 07:43:34', '2023-03-11 07:45:13'),
-(4, 'Phương Míts', '0', 1, NULL, '{\"lat\": \"21.584666889546142\", \"long\": \"105.79704810628657\", \"wards\": \"Thái Nguyên\", \"address\": \"Thái Nguyên\", \"province\": \"Thai Nguyen\"}', '0947112888', '0947112888', 'https://www.facebook.com/phuong.phamthu.73', 'haitiger.lp@gmail.com', NULL, '$2y$10$qlNCzkOxVSFotC5Y8emXvuR.xIfziMtaKDtcC0kH35vuHOJ4Fn1VS', 'K1t8ie97JTuolDQu1ol64HvJh22oj936YBvgcCvrujPEIrjhmCV7L15HRChU', NULL, 'phuong-mit1678785009666329845276_587278850084067_2155466971109966437_n.jpg', '<p>Chuy&ecirc;n m&ocirc;i giới nh&agrave; trọ chất lượng cho c&aacute;c sinh vi&ecirc;n v&agrave; người lao động</p>', '2023-03-14 02:04:23', '2023-03-24 02:38:15'),
-(5, 'Phạm Quang Minh', '0', 1, '2023-03-24 05:06:02', '{\"lat\": \"21.5873630616382\", \"long\": \"105.80454624065901\", \"wards\": \"Thái Nguyên\", \"address\": \"70, Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam\", \"province\": \"Thai Nguyen\"}', '0932847329', '0932847329', 'https://www.facebook.com/', 'quangminh@gmail.com', NULL, '$2y$10$Vgl.R19WOVjUE/I2/RFmJOoNqzjoz9T2krvCwkA4uBa3Ksx5rUnyW', 'EPW6NuxQOh0lANSY8DWjEZJeaVZ04r5WmTp4pFYSyvrpA04BJe0U6pIknFV7', NULL, 'pham-quang-minh1679584755226Avatar-hai-1.jpg', NULL, '2023-03-23 06:19:20', '2023-03-24 06:33:27'),
+(2, 'Nguyễn Chí Bảo', '1', 1, NULL, '{\"lat\": \"21.587515243878784\", \"long\": \"105.80429915130111\", \"wards\": \"TPHCM\", \"address\": \"33 Vĩnh Viễn Phường 2 Quận 10\", \"province\": \"TPHCM\"}', '0345189815', '0345189815', 'https://www.facebook.com/', 'admin@gmail.com', NULL, '$2y$10$sFfA5sO9HhaI51KaYFfLwun99gv0g2DquNJyDcQnQnz6jhqn1AX6S', '8hS5Y1EYBKmVdCcU5PxjAVDMZmUvsJgXAiz7o1VwIzyeyrQaUhPZEQjOIDMp', NULL, 'nguyen-chi-bao1685970979522312304166_747318310287788_8287478252958706430_n.jpg', '<p>hello</p>', '2023-03-10 09:33:38', '2023-06-05 06:16:21'),
+(3, 'Ông Độ', '0', 1, NULL, '{\"lat\": \"21.580819536144475\", \"long\": \"105.80625425570588\", \"wards\": \"Thái Nguyên\", \"address\": \"21, Ngõ 167 Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam\", \"province\": \"Thai Nguyen\"}', '0372312809', '1232435245', 'https://www.facebook.com/', '12345@gmail.com', NULL, '$2y$10$zIjSXzsOUdR1.Dzc/uNG9OTzgJ9ENiD4KuvxC/ThDz8uV2aAVdWjq', NULL, NULL, 'ong-do1678545911608Hinh-anh-hinh-nen-Sylas.jpg', '<p>aaaaa</p>', '2023-03-11 07:43:34', '2023-03-11 07:45:13'),
+(4, 'Quốc Huy', '0', 0, '2023-06-05 07:01:28', '{\"lat\": \"21.584666889546142\", \"long\": \"105.79704810628657\", \"wards\": \"Thái Nguyên\", \"address\": \"Thái Nguyên\", \"province\": \"Thai Nguyen\"}', '132124124', '12345324', 'https://www.facebook.com/', 'itsquochuy@gmail.com', NULL, '123456', 'K1t8ie97JTuolDQu1ol64HvJh22oj936YBvgcCvrujPEIrjhmCV7L15HRChU', NULL, 'phuong-mit1678785009666329845276_587278850084067_2155466971109966437_n.jpg', '<p>Chuy&ecirc;n m&ocirc;i giới nh&agrave; trọ chất lượng cho c&aacute;c sinh vi&ecirc;n v&agrave; người lao động</p>', '2023-03-14 02:04:23', '2023-06-05 07:01:28'),
+(5, 'Lực', '0', 1, '2023-03-24 05:06:02', '{\"lat\": \"21.5873630616382\", \"long\": \"105.80454624065901\", \"wards\": \"Thái Nguyên\", \"address\": \"70, Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam\", \"province\": \"Thai Nguyen\"}', '0932847329', '0932847329', 'https://www.facebook.com/', 'luc@gmail.com', NULL, '123456', 'EPW6NuxQOh0lANSY8DWjEZJeaVZ04r5WmTp4pFYSyvrpA04BJe0U6pIknFV7', NULL, 'pham-quang-minh1679584755226Avatar-hai-1.jpg', NULL, '2023-03-23 06:19:20', '2023-03-24 06:33:27'),
 (6, 'test', '0', 1, '2023-03-24 09:53:46', '{\"lat\": \"21.580781511650812\", \"long\": \"105.8061939914017\", \"wards\": \"Thái Nguyên\", \"address\": \"21, Ngõ 167 Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam\", \"province\": \"Thai Nguyen\"}', '0123123123', '0123123123', 'https://www.facebook.com', 'admin@admin.com', NULL, '$2y$10$CVdKYtp/alxogtGQ2ZSNg.qDV/FcDY31cEVS1rP0TZx.WmETWswZa', NULL, NULL, 'test1679654638042337145922_679402647520359_5699422031336588830_n.jpg', NULL, '2023-03-24 03:33:08', '2023-03-26 19:38:25'),
-(7, 'NGUYEN THANH TRUNG', '0', 1, '2023-04-01 20:13:56', '{\"lat\": \"21.588497012852457\", \"long\": \"105.80502040588392\", \"wards\": \"Thái Nguyên\", \"address\": \"68, Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam\", \"province\": \"Thai Nguyen\"}', '0869999999', '0869999999', 'https://www.facebook.com/profile.php?id=100016213204837', 'nguyenthanhtrung2k2dz@gmail.com', NULL, '$2y$10$CpJT6hYXkFB37qlin2rvgeMXxigmMZl9o9FKorptANg3nEDwSDvBu', NULL, NULL, 'nguyen-thanh-trung1680404389717logo2.png', NULL, '2023-04-01 19:54:16', '2023-04-01 20:14:13'),
-(8, 'Hoàng Mạnh', '0', 1, NULL, '{\"lat\": \"21.58690793500223\", \"long\": \"105.80571670554862\", \"wards\": \"Thái Nguyên\", \"address\": \"82, Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam\", \"province\": \"Thai Nguyen\"}', '0372312809', '0372312809', 'https://www.facebook.com/', 'chutro3@gmail.cpm', NULL, '$2y$10$Hr1E/FdAY/Xs1v99KoD8nusADBrXdUaPbG/yUBRD7X5ahTiRiw/wu', NULL, NULL, 'hoang-manh16815413622862022-12-05t174425z-135918881-up1eic51d9ylo-rtrmadp-3-soccer-worldcup-jpn-cro-report-5528.jpg', '<p>uy t&iacute;n&nbsp;</p>', '2023-04-14 23:48:16', '2023-04-14 23:49:23'),
-(9, 'Nguyễn Thanh Lâm', '0', 1, NULL, '{\"province\":\"Long An\",\"wards\":\"B\\u1ebfn L\\u1ee9c\",\"address\":\"70, \\u0110\\u01b0\\u1eddng Ph\\u1ea1m V\\u0103n Ng\\u0169, B\\u1ebfn L\\u1ee9c district, B\\u1ebfn L\\u1ee9c, Long An 82606, Vietnam\",\"lat\":\"10.63893411738556\",\"long\":\"106.47700264772335\"}', '0999999999', '0343754517', 'https://facebook.com', 'nguyenkhanhstmqn@gmail.com', NULL, '$2y$10$ARHv5H.ozhYkRIZWaaeXTer0zMt8llIRweGW7V3RPakjC1CxJsDz6', NULL, NULL, 'nguyen-thanh-lam1682929664607avatar5.png', '<p>M&igrave;nh L&agrave; Nguyễn Thanh L&acirc;m</p>', '2023-05-01 01:26:11', '2023-05-01 01:27:47');
+(7, 'Tuan Anh', '0', 1, '2023-04-01 20:13:56', '{\"lat\": \"21.588497012852457\", \"long\": \"105.80502040588392\", \"wards\": \"Thái Nguyên\", \"address\": \"68, Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam\", \"province\": \"Thai Nguyen\"}', '13245565646', '12312245', 'https://www.facebook.com/', 'tuananh@gmail.com', NULL, '$2y$10$CpJT6hYXkFB37qlin2rvgeMXxigmMZl9o9FKorptANg3nEDwSDvBu', NULL, NULL, 'nguyen-thanh-trung1680404389717logo2.png', NULL, '2023-04-01 19:54:16', '2023-04-01 20:14:13'),
+(8, 'Tuấn Anh', '0', 1, NULL, '{\"lat\": \"21.58690793500223\", \"long\": \"105.80571670554862\", \"wards\": \"Thái Nguyên\", \"address\": \"82, Đường Z115, Quyết Thắng, Thái Nguyên, Thai Nguyen 24119, Vietnam\", \"province\": \"Thai Nguyen\"}', '0372312809', '0345189815', 'https://www.facebook.com/', 'chutro3@gmail.cpm', NULL, '$2y$10$Hr1E/FdAY/Xs1v99KoD8nusADBrXdUaPbG/yUBRD7X5ahTiRiw/wu', NULL, NULL, 'hoang-manh16815413622862022-12-05t174425z-135918881-up1eic51d9ylo-rtrmadp-3-soccer-worldcup-jpn-cro-report-5528.jpg', '<p>uy t&iacute;n&nbsp;</p>', '2023-04-14 23:48:16', '2023-06-05 06:21:08'),
+(9, 'Nguyễn Chí Bảo', '0', 1, NULL, '{\"lat\": \"10.804994530080478\", \"long\": \"107.30006454025896\", \"wards\": \"Huyện Cẩm Mỹ\", \"address\": \"Đường Xuân Định, Xã Bảo Bình, Huyện Cẩm Mỹ, Dong Nai 76511, Vietnam\", \"province\": \"Dong Nai\"}', '0345189815', '0345189815', 'https://www.facebook.com/iam.chjbao23', 'testdemo@gmail.com', NULL, '$2y$10$v6.su8CvKrqbRqhGQFt/4O88GJUN4wh89rOVJHbUd1IWVtZiw4n7.', NULL, NULL, 'nguyen-chi-bao1686007671655335653307_731544688440538_6315931979583313489_n.jpg', '<p>hello</p>', '2023-06-05 16:12:40', '2023-06-05 16:27:58');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `wards`
+-- Table structure for table `wards`
 --
 
 CREATE TABLE `wards` (
@@ -1344,41 +1321,22 @@ CREATE TABLE `wards` (
   `full_name_en` varchar(255) DEFAULT NULL,
   `code_name` varchar(255) DEFAULT NULL,
   `district_code` varchar(20) DEFAULT NULL,
-  `administrative_unit_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `administrative_unit_id` int DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `wards`
+-- Dumping data for table `wards`
 --
 
 INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
-('00001', 'Phúc Xá', 'Phuc Xa', 'Phường Phúc Xá', 'Phuc Xa Ward', 'phuc_xa', '001', 8),
-('00004', 'Trúc Bạch', 'Truc Bach', 'Phường Trúc Bạch', 'Truc Bach Ward', 'truc_bach', '001', 8),
+('00001', '1', '1', 'Phường 1', '1 Ward', '1', '001', 8),
+('00004', '2', '2', 'Phường 2', '2 Ward', '2', '001', 8),
 ('00006', 'Vĩnh Phúc', 'Vinh Phuc', 'Phường Vĩnh Phúc', 'Vinh Phuc Ward', 'vinh_phuc', '001', 8),
 ('00007', 'Cống Vị', 'Cong Vi', 'Phường Cống Vị', 'Cong Vi Ward', 'cong_vi', '001', 8),
 ('00008', 'Liễu Giai', 'Lieu Giai', 'Phường Liễu Giai', 'Lieu Giai Ward', 'lieu_giai', '001', 8),
-('00010', 'Nguyễn Trung Trực', 'Nguyen Trung Truc', 'Phường Nguyễn Trung Trực', 'Nguyen Trung Truc Ward', 'nguyen_trung_truc', '001', 8),
 ('00013', 'Quán Thánh', 'Quan Thanh', 'Phường Quán Thánh', 'Quan Thanh Ward', 'quan_thanh', '001', 8),
-('00016', 'Ngọc Hà', 'Ngoc Ha', 'Phường Ngọc Hà', 'Ngoc Ha Ward', 'ngoc_ha', '001', 8),
-('00019', 'Điện Biên', 'Dien Bien', 'Phường Điện Biên', 'Dien Bien Ward', 'dien_bien', '001', 8),
-('00022', 'Đội Cấn', 'Doi Can', 'Phường Đội Cấn', 'Doi Can Ward', 'doi_can', '001', 8),
-('00025', 'Ngọc Khánh', 'Ngoc Khanh', 'Phường Ngọc Khánh', 'Ngoc Khanh Ward', 'ngoc_khanh', '001', 8),
-('00028', 'Kim Mã', 'Kim Ma', 'Phường Kim Mã', 'Kim Ma Ward', 'kim_ma', '001', 8),
-('00031', 'Giảng Võ', 'Giang Vo', 'Phường Giảng Võ', 'Giang Vo Ward', 'giang_vo', '001', 8),
-('00034', 'Thành Công', 'Thanh Cong', 'Phường Thành Công', 'Thanh Cong Ward', 'thanh_cong', '001', 8),
-('00037', 'Phúc Tân', 'Phuc Tan', 'Phường Phúc Tân', 'Phuc Tan Ward', 'phuc_tan', '002', 8),
 ('00040', 'Đồng Xuân', 'Dong Xuan', 'Phường Đồng Xuân', 'Dong Xuan Ward', 'dong_xuan', '002', 8),
 ('00043', 'Hàng Mã', 'Hang Ma', 'Phường Hàng Mã', 'Hang Ma Ward', 'hang_ma', '002', 8),
-('00046', 'Hàng Buồm', 'Hang Buom', 'Phường Hàng Buồm', 'Hang Buom Ward', 'hang_buom', '002', 8),
-('00049', 'Hàng Đào', 'Hang Dao', 'Phường Hàng Đào', 'Hang Dao Ward', 'hang_dao', '002', 8),
-('00052', 'Hàng Bồ', 'Hang Bo', 'Phường Hàng Bồ', 'Hang Bo Ward', 'hang_bo', '002', 8),
-('00055', 'Cửa Đông', 'Cua Dong', 'Phường Cửa Đông', 'Cua Dong Ward', 'cua_dong', '002', 8),
-('00058', 'Lý Thái Tổ', 'Ly Thai To', 'Phường Lý Thái Tổ', 'Ly Thai To Ward', 'ly_thai_to', '002', 8),
-('00061', 'Hàng Bạc', 'Hang Bac', 'Phường Hàng Bạc', 'Hang Bac Ward', 'hang_bac', '002', 8),
-('00064', 'Hàng Gai', 'Hang Gai', 'Phường Hàng Gai', 'Hang Gai Ward', 'hang_gai', '002', 8),
-('00067', 'Chương Dương', 'Chuong Duong', 'Phường Chương Dương', 'Chuong Duong Ward', 'chuong_duong', '002', 8),
-('00070', 'Hàng Trống', 'Hang Trong', 'Phường Hàng Trống', 'Hang Trong Ward', 'hang_trong', '002', 8),
-('00073', 'Cửa Nam', 'Cua Nam', 'Phường Cửa Nam', 'Cua Nam Ward', 'cua_nam', '002', 8),
 ('00076', 'Hàng Bông', 'Hang Bong', 'Phường Hàng Bông', 'Hang Bong Ward', 'hang_bong', '002', 8),
 ('00079', 'Tràng Tiền', 'Trang Tien', 'Phường Tràng Tiền', 'Trang Tien Ward', 'trang_tien', '002', 8),
 ('00082', 'Trần Hưng Đạo', 'Tran Hung Dao', 'Phường Trần Hưng Đạo', 'Tran Hung Dao Ward', 'tran_hung_dao', '002', 8),
@@ -1880,8 +1838,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('01579', 'Phi Hải', 'Phi Hai', 'Xã Phi Hải', 'Phi Hai Commune', 'phi_hai', '049', 10),
 ('01582', 'Quảng Hưng', 'Quang Hung', 'Xã Quảng Hưng', 'Quang Hung Commune', 'quang_hung', '049', 10),
 ('01594', 'Độc Lập', 'Doc Lap', 'Xã Độc Lập', 'Doc Lap Commune', 'doc_lap', '049', 10),
-('01597', 'Cai Bộ', 'Cai Bo', 'Xã Cai Bộ', 'Cai Bo Commune', 'cai_bo', '049', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('01597', 'Cai Bộ', 'Cai Bo', 'Xã Cai Bộ', 'Cai Bo Commune', 'cai_bo', '049', 10),
 ('01603', 'Phúc Sen', 'Phuc Sen', 'Xã Phúc Sen', 'Phuc Sen Commune', 'phuc_sen', '049', 10),
 ('01606', 'Chí Thảo', 'Chi Thao', 'Xã Chí Thảo', 'Chi Thao Commune', 'chi_thao', '049', 10),
 ('01609', 'Tự Do', 'Tu Do', 'Xã Tự Do', 'Tu Do Commune', 'tu_do', '049', 10),
@@ -1901,7 +1858,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('01666', 'Đại Tiến', 'Dai Tien', 'Xã Đại Tiến', 'Dai Tien Commune', 'dai_tien', '051', 10),
 ('01669', 'Đức Long', 'Duc Long', 'Xã Đức Long', 'Duc Long Commune', 'duc_long', '051', 10),
 ('01672', 'Ngũ Lão', 'Ngu Lao', 'Xã Ngũ Lão', 'Ngu Lao Commune', 'ngu_lao', '051', 10),
-('01675', 'Trương Lương', 'Truong Luong', 'Xã Trương Lương', 'Truong Luong Commune', 'truong_luong', '051', 10),
+('01675', 'Trương Lương', 'Truong Luong', 'Xã Trương Lương', 'Truong Luong Commune', 'truong_luong', '051', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('01687', 'Hồng Việt', 'Hong Viet', 'Xã Hồng Việt', 'Hong Viet Commune', 'hong_viet', '051', 10),
 ('01693', 'Vĩnh Quang', 'Vinh Quang', 'Xã Vĩnh Quang', 'Vinh Quang Commune', 'vinh_quang', '040', 10),
 ('01696', 'Hoàng Tung', 'Hoang Tung', 'Xã Hoàng Tung', 'Hoang Tung Commune', 'hoang_tung', '051', 10),
@@ -2414,8 +2372,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('03260', 'Rạng Đông', 'Rang Dong', 'Xã Rạng Đông', 'Rang Dong Commune', 'rang_dong', '099', 10),
 ('03262', 'Mùn Chung', 'Mun Chung', 'Xã Mùn Chung', 'Mun Chung Commune', 'mun_chung', '099', 10),
 ('03263', 'Nà Tòng', 'Na Tong', 'Xã Nà Tòng', 'Na Tong Commune', 'na_tong', '099', 10),
-('03265', 'Ta Ma', 'Ta Ma', 'Xã Ta Ma', 'Ta Ma Commune', 'ta_ma', '099', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('03265', 'Ta Ma', 'Ta Ma', 'Xã Ta Ma', 'Ta Ma Commune', 'ta_ma', '099', 10),
 ('03268', 'Mường Mùn', 'Muong Mun', 'Xã Mường Mùn', 'Muong Mun Commune', 'muong_mun', '099', 10),
 ('03269', 'Pú Xi', 'Pu Xi', 'Xã Pú Xi', 'Pu Xi Commune', 'pu_xi', '099', 10),
 ('03271', 'Pú Nhung', 'Pu Nhung', 'Xã Pú Nhung', 'Pu Nhung Commune', 'pu_nhung', '099', 10),
@@ -2435,7 +2392,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('03302', 'Xuân Lao', 'Xuan Lao', 'Xã Xuân Lao', 'Xuan Lao Commune', 'xuan_lao', '102', 10),
 ('03304', 'Tênh Phông', 'Tenh Phong', 'Xã Tênh Phông', 'Tenh Phong Commune', 'tenh_phong', '099', 10),
 ('03307', 'Ẳng Nưa', 'Ang Nua', 'Xã Ẳng Nưa', 'Ang Nua Commune', 'ang_nua', '102', 10),
-('03310', 'Ẳng Cang', 'Ang Cang', 'Xã Ẳng Cang', 'Ang Cang Commune', 'ang_cang', '102', 10),
+('03310', 'Ẳng Cang', 'Ang Cang', 'Xã Ẳng Cang', 'Ang Cang Commune', 'ang_cang', '102', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('03312', 'Nặm Lịch', 'Nam Lich', 'Xã Nặm Lịch', 'Nam Lich Commune', 'nam_lich', '102', 10),
 ('03313', 'Mường Lạn', 'Muong Lan', 'Xã Mường Lạn', 'Muong Lan Commune', 'muong_lan', '102', 10),
 ('03316', 'Nà Tấu', 'Na Tau', 'Xã Nà Tấu', 'Na Tau Commune', 'na_tau', '094', 10),
@@ -2947,8 +2905,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('04756', 'Tân Hương', 'Tan Huong', 'Xã Tân Hương', 'Tan Huong Commune', 'tan_huong', '141', 10),
 ('04759', 'Phúc An', 'Phuc An', 'Xã Phúc An', 'Phuc An Commune', 'phuc_an', '141', 10),
 ('04762', 'Bạch Hà', 'Bach Ha', 'Xã Bạch Hà', 'Bach Ha Commune', 'bach_ha', '141', 10),
-('04765', 'Vũ Linh', 'Vu Linh', 'Xã Vũ Linh', 'Vu Linh Commune', 'vu_linh', '141', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('04765', 'Vũ Linh', 'Vu Linh', 'Xã Vũ Linh', 'Vu Linh Commune', 'vu_linh', '141', 10),
 ('04768', 'Đại Đồng', 'Dai Dong', 'Xã Đại Đồng', 'Dai Dong Commune', 'dai_dong', '141', 10),
 ('04771', 'Vĩnh Kiên', 'Vinh Kien', 'Xã Vĩnh Kiên', 'Vinh Kien Commune', 'vinh_kien', '141', 10),
 ('04774', 'Yên Bình', 'Yen Binh', 'Xã Yên Bình', 'Yen Binh Commune', 'yen_binh', '141', 10),
@@ -2968,7 +2925,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('04819', 'Dân Chủ', 'Dan Chu', 'Phường Dân Chủ', 'Dan Chu Ward', 'dan_chu', '148', 8),
 ('04825', 'Hòa Bình', 'Hoa Binh', 'Xã Hòa Bình', 'Hoa Binh Commune', 'hoa_binh', '148', 10),
 ('04828', 'Thống Nhất', 'Thong Nhat', 'Phường Thống Nhất', 'Thong Nhat Ward', 'thong_nhat', '148', 8),
-('04831', 'Đà Bắc', 'Da Bac', 'Thị trấn Đà Bắc', 'Da Bac Township', 'da_bac', '150', 9),
+('04831', 'Đà Bắc', 'Da Bac', 'Thị trấn Đà Bắc', 'Da Bac Township', 'da_bac', '150', 9);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('04834', 'Nánh Nghê', 'Nanh Nghe', 'Xã Nánh Nghê', 'Nanh Nghe Commune', 'nanh_nghe', '150', 10),
 ('04840', 'Giáp Đắt', 'Giap Dat', 'Xã Giáp Đắt', 'Giap Dat Commune', 'giap_dat', '150', 10),
 ('04846', 'Mường Chiềng', 'Muong Chieng', 'Xã Mường Chiềng', 'Muong Chieng Commune', 'muong_chieng', '150', 10),
@@ -3486,8 +3444,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('06631', 'Thái Bình', 'Thai Binh', 'Xã Thái Bình', 'Thai Binh Commune', 'thai_binh', '189', 10),
 ('06634', 'Cường Lợi', 'Cuong Loi', 'Xã Cường Lợi', 'Cuong Loi Commune', 'cuong_loi', '189', 10),
 ('06637', 'Châu Sơn', 'Chau Son', 'Xã Châu Sơn', 'Chau Son Commune', 'chau_son', '189', 10),
-('06640', 'Lâm Ca', 'Lam Ca', 'Xã Lâm Ca', 'Lam Ca Commune', 'lam_ca', '189', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('06640', 'Lâm Ca', 'Lam Ca', 'Xã Lâm Ca', 'Lam Ca Commune', 'lam_ca', '189', 10),
 ('06643', 'Đồng Thắng', 'Dong Thang', 'Xã Đồng Thắng', 'Dong Thang Commune', 'dong_thang', '189', 10),
 ('06646', 'Bắc Lãng', 'Bac Lang', 'Xã Bắc Lãng', 'Bac Lang Commune', 'bac_lang', '189', 10),
 ('06649', 'Hà Khánh', 'Ha Khanh', 'Phường Hà Khánh', 'Ha Khanh Ward', 'ha_khanh', '193', 8),
@@ -3507,7 +3464,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('06691', 'Hồng Gai', 'Hong Gai', 'Phường Hồng Gai', 'Hong Gai Ward', 'hong_gai', '193', 8),
 ('06694', 'Bạch Đằng', 'Bach Dang', 'Phường Bạch Đằng', 'Bach Dang Ward', 'bach_dang', '193', 8),
 ('06697', 'Hồng Hà', 'Hong Ha', 'Phường Hồng Hà', 'Hong Ha Ward', 'hong_ha', '193', 8),
-('06700', 'Tuần Châu', 'Tuan Chau', 'Phường Tuần Châu', 'Tuan Chau Ward', 'tuan_chau', '193', 8),
+('06700', 'Tuần Châu', 'Tuan Chau', 'Phường Tuần Châu', 'Tuan Chau Ward', 'tuan_chau', '193', 8);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('06703', 'Việt Hưng', 'Viet Hung', 'Phường Việt Hưng', 'Viet Hung Ward', 'viet_hung', '193', 8),
 ('06706', 'Đại Yên', 'Dai Yen', 'Phường Đại Yên', 'Dai Yen Ward', 'dai_yen', '193', 8),
 ('06709', 'Ka Long', 'Ka Long', 'Phường Ka Long', 'Ka Long Ward', 'ka_long', '194', 8),
@@ -4027,8 +3985,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('08440', 'Hiền Quan', 'Hien Quan', 'Xã Hiền Quan', 'Hien Quan Commune', 'hien_quan', '236', 10),
 ('08443', 'Bắc Sơn', 'Bac Son', 'Xã Bắc Sơn', 'Bac Son Commune', 'bac_son', '236', 10),
 ('08446', 'Thanh Uyên', 'Thanh Uyen', 'Xã Thanh Uyên', 'Thanh Uyen Commune', 'thanh_uyen', '236', 10),
-('08461', 'Lam Sơn', 'Lam Son', 'Xã Lam Sơn', 'Lam Son Commune', 'lam_son', '236', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('08461', 'Lam Sơn', 'Lam Son', 'Xã Lam Sơn', 'Lam Son Commune', 'lam_son', '236', 10),
 ('08467', 'Vạn Xuân', 'Van Xuan', 'Xã Vạn Xuân', 'Van Xuan Commune', 'van_xuan', '236', 10),
 ('08470', 'Quang Húc', 'Quang Huc', 'Xã Quang Húc', 'Quang Huc Commune', 'quang_huc', '236', 10),
 ('08473', 'Hương Nộn', 'Huong Non', 'Xã Hương Nộn', 'Huong Non Commune', 'huong_non', '236', 10),
@@ -4048,7 +4005,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('08518', 'Sơn Vi', 'Son Vi', 'Xã Sơn Vi', 'Son Vi Commune', 'son_vi', '237', 10),
 ('08521', 'Phùng Nguyên', 'Phung Nguyen', 'Xã Phùng Nguyên', 'Phung Nguyen Commune', 'phung_nguyen', '237', 10),
 ('08527', 'Cao Xá', 'Cao Xa', 'Xã Cao Xá', 'Cao Xa Commune', 'cao_xa', '237', 10),
-('08533', 'Vĩnh Lại', 'Vinh Lai', 'Xã Vĩnh Lại', 'Vinh Lai Commune', 'vinh_lai', '237', 10),
+('08533', 'Vĩnh Lại', 'Vinh Lai', 'Xã Vĩnh Lại', 'Vinh Lai Commune', 'vinh_lai', '237', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('08536', 'Tứ Xã', 'Tu Xa', 'Xã Tứ Xã', 'Tu Xa Commune', 'tu_xa', '237', 10),
 ('08539', 'Bản Nguyên', 'Ban Nguyen', 'Xã Bản Nguyên', 'Ban Nguyen Commune', 'ban_nguyen', '237', 10),
 ('08542', 'Thanh Sơn', 'Thanh Son', 'Thị trấn Thanh Sơn', 'Thanh Son Township', 'thanh_son', '238', 9),
@@ -4565,8 +4523,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('10084', 'Quảng Bị', 'Quang Bi', 'Xã Quảng Bị', 'Quang Bi Commune', 'quang_bi', '277', 10),
 ('10087', 'Mỹ Lương', 'My Luong', 'Xã Mỹ Lương', 'My Luong Commune', 'my_luong', '277', 10),
 ('10090', 'Thượng Vực', 'Thuong Vuc', 'Xã Thượng Vực', 'Thuong Vuc Commune', 'thuong_vuc', '277', 10),
-('10093', 'Hồng Phong', 'Hong Phong', 'Xã Hồng Phong', 'Hong Phong Commune', 'hong_phong', '277', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('10093', 'Hồng Phong', 'Hong Phong', 'Xã Hồng Phong', 'Hong Phong Commune', 'hong_phong', '277', 10),
 ('10096', 'Đồng Phú', 'Dong Phu', 'Xã Đồng Phú', 'Dong Phu Commune', 'dong_phu', '277', 10),
 ('10099', 'Trần Phú', 'Tran Phu', 'Xã Trần Phú', 'Tran Phu Commune', 'tran_phu', '277', 10),
 ('10102', 'Văn Võ', 'Van Vo', 'Xã Văn Võ', 'Van Vo Commune', 'van_vo', '277', 10),
@@ -4586,7 +4543,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('10144', 'Thanh Thùy', 'Thanh Thuy', 'Xã Thanh Thùy', 'Thanh Thuy Commune', 'thanh_thuy', '278', 10),
 ('10147', 'Thanh Mai', 'Thanh Mai', 'Xã Thanh Mai', 'Thanh Mai Commune', 'thanh_mai', '278', 10),
 ('10150', 'Thanh Văn', 'Thanh Van', 'Xã Thanh Văn', 'Thanh Van Commune', 'thanh_van', '278', 10),
-('10153', 'Đỗ Động', 'Do Dong', 'Xã Đỗ Động', 'Do Dong Commune', 'do_dong', '278', 10),
+('10153', 'Đỗ Động', 'Do Dong', 'Xã Đỗ Động', 'Do Dong Commune', 'do_dong', '278', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('10156', 'Kim An', 'Kim An', 'Xã Kim An', 'Kim An Commune', 'kim_an', '278', 10),
 ('10159', 'Kim Thư', 'Kim Thu', 'Xã Kim Thư', 'Kim Thu Commune', 'kim_thu', '278', 10),
 ('10162', 'Phương Trung', 'Phuong Trung', 'Xã Phương Trung', 'Phuong Trung Commune', 'phuong_trung', '278', 10),
@@ -5100,8 +5058,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('11773', 'Khởi Nghĩa', 'Khoi Nghia', 'Xã Khởi Nghĩa', 'Khoi Nghia Commune', 'khoi_nghia', '315', 10),
 ('11776', 'Tiên Thanh', 'Tien Thanh', 'Xã Tiên Thanh', 'Tien Thanh Commune', 'tien_thanh', '315', 10),
 ('11779', 'Cấp Tiến', 'Cap Tien', 'Xã Cấp Tiến', 'Cap Tien Commune', 'cap_tien', '315', 10),
-('11782', 'Kiến Thiết', 'Kien Thiet', 'Xã Kiến Thiết', 'Kien Thiet Commune', 'kien_thiet', '315', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('11782', 'Kiến Thiết', 'Kien Thiet', 'Xã Kiến Thiết', 'Kien Thiet Commune', 'kien_thiet', '315', 10),
 ('11785', 'Đoàn Lập', 'Doan Lap', 'Xã Đoàn Lập', 'Doan Lap Commune', 'doan_lap', '315', 10),
 ('11788', 'Bạch Đằng', 'Bach Dang', 'Xã Bạch Đằng', 'Bach Dang Commune', 'bach_dang', '315', 10),
 ('11791', 'Quang Phục', 'Quang Phuc', 'Xã Quang Phục', 'Quang Phuc Commune', 'quang_phuc', '315', 10),
@@ -5120,7 +5077,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('11833', 'Thắng Thuỷ', 'Thang Thuy', 'Xã Thắng Thuỷ', 'Thang Thuy Commune', 'thang_thuy', '316', 10),
 ('11836', 'Trung Lập', 'Trung Lap', 'Xã Trung Lập', 'Trung Lap Commune', 'trung_lap', '316', 10),
 ('11839', 'Việt Tiến', 'Viet Tien', 'Xã Việt Tiến', 'Viet Tien Commune', 'viet_tien', '316', 10),
-('11842', 'Vĩnh An', 'Vinh An', 'Xã Vĩnh An', 'Vinh An Commune', 'vinh_an', '316', 10),
+('11842', 'Vĩnh An', 'Vinh An', 'Xã Vĩnh An', 'Vinh An Commune', 'vinh_an', '316', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('11845', 'Vĩnh Long', 'Vinh Long', 'Xã Vĩnh Long', 'Vinh Long Commune', 'vinh_long', '316', 10),
 ('11848', 'Hiệp Hoà', 'Hiep Hoa', 'Xã Hiệp Hoà', 'Hiep Hoa Commune', 'hiep_hoa', '316', 10),
 ('11851', 'Hùng Tiến', 'Hung Tien', 'Xã Hùng Tiến', 'Hung Tien Commune', 'hung_tien', '316', 10),
@@ -5631,8 +5589,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('13444', 'Liêm Tuyền', 'Liem Tuyen', 'Xã Liêm Tuyền', 'Liem Tuyen Commune', 'liem_tuyen', '347', 10),
 ('13447', 'Liêm Tiết', 'Liem Tiet', 'Xã Liêm Tiết', 'Liem Tiet Commune', 'liem_tiet', '347', 10),
 ('13450', 'Liêm Phong', 'Liem Phong', 'Xã Liêm Phong', 'Liem Phong Commune', 'liem_phong', '351', 10),
-('13453', 'Thanh Hà', 'Thanh Ha', 'Xã Thanh Hà', 'Thanh Ha Commune', 'thanh_ha', '351', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('13453', 'Thanh Hà', 'Thanh Ha', 'Xã Thanh Hà', 'Thanh Ha Commune', 'thanh_ha', '351', 10),
 ('13456', 'Liêm Cần', 'Liem Can', 'Xã Liêm Cần', 'Liem Can Commune', 'liem_can', '351', 10),
 ('13459', 'Thanh Tuyền', 'Thanh Tuyen', 'Phường Thanh Tuyền', 'Thanh Tuyen Ward', 'thanh_tuyen', '347', 8),
 ('13465', 'Liêm Thuận', 'Liem Thuan', 'Xã Liêm Thuận', 'Liem Thuan Commune', 'liem_thuan', '351', 10),
@@ -5651,7 +5608,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('13504', 'Bình Nghĩa', 'Binh Nghia', 'Xã Bình Nghĩa', 'Binh Nghia Commune', 'binh_nghia', '352', 10),
 ('13507', 'Đinh Xá', 'Dinh Xa', 'Xã Đinh Xá', 'Dinh Xa Commune', 'dinh_xa', '347', 10),
 ('13510', 'Tràng An', 'Trang An', 'Xã Tràng An', 'Trang An Commune', 'trang_an', '352', 10),
-('13513', 'Trịnh Xá', 'Trinh Xa', 'Xã Trịnh Xá', 'Trinh Xa Commune', 'trinh_xa', '347', 10),
+('13513', 'Trịnh Xá', 'Trinh Xa', 'Xã Trịnh Xá', 'Trinh Xa Commune', 'trinh_xa', '347', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('13516', 'Đồng Du', 'Dong Du', 'Xã Đồng Du', 'Dong Du Commune', 'dong_du', '352', 10),
 ('13519', 'Ngọc Lũ', 'Ngoc Lu', 'Xã Ngọc Lũ', 'Ngoc Lu Commune', 'ngoc_lu', '352', 10),
 ('13522', 'Hưng Công', 'Hung Cong', 'Xã Hưng Công', 'Hung Cong Commune', 'hung_cong', '352', 10),
@@ -6163,8 +6121,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('15088', 'Đồng Thịnh', 'Dong Thinh', 'Xã Đồng Thịnh', 'Dong Thinh Commune', 'dong_thinh', '389', 10),
 ('15091', 'Ngọc Liên', 'Ngoc Lien', 'Xã Ngọc Liên', 'Ngoc Lien Commune', 'ngoc_lien', '389', 10),
 ('15094', 'Ngọc Sơn', 'Ngoc Son', 'Xã Ngọc Sơn', 'Ngoc Son Commune', 'ngoc_son', '389', 10),
-('15097', 'Lộc Thịnh', 'Loc Thinh', 'Xã Lộc Thịnh', 'Loc Thinh Commune', 'loc_thinh', '389', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('15097', 'Lộc Thịnh', 'Loc Thinh', 'Xã Lộc Thịnh', 'Loc Thinh Commune', 'loc_thinh', '389', 10),
 ('15100', 'Cao Thịnh', 'Cao Thinh', 'Xã Cao Thịnh', 'Cao Thinh Commune', 'cao_thinh', '389', 10),
 ('15103', 'Ngọc Trung', 'Ngoc Trung', 'Xã Ngọc Trung', 'Ngoc Trung Commune', 'ngoc_trung', '389', 10),
 ('15106', 'Phùng Giáo', 'Phung Giao', 'Xã Phùng Giáo', 'Phung Giao Commune', 'phung_giao', '389', 10),
@@ -6184,7 +6141,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('15151', 'Cẩm Bình', 'Cam Binh', 'Xã Cẩm Bình', 'Cam Binh Commune', 'cam_binh', '390', 10),
 ('15154', 'Cẩm Tú', 'Cam Tu', 'Xã Cẩm Tú', 'Cam Tu Commune', 'cam_tu', '390', 10),
 ('15160', 'Cẩm Châu', 'Cam Chau', 'Xã Cẩm Châu', 'Cam Chau Commune', 'cam_chau', '390', 10),
-('15163', 'Cẩm Tâm', 'Cam Tam', 'Xã Cẩm Tâm', 'Cam Tam Commune', 'cam_tam', '390', 10),
+('15163', 'Cẩm Tâm', 'Cam Tam', 'Xã Cẩm Tâm', 'Cam Tam Commune', 'cam_tam', '390', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('15169', 'Cẩm Ngọc', 'Cam Ngoc', 'Xã Cẩm Ngọc', 'Cam Ngoc Commune', 'cam_ngoc', '390', 10),
 ('15172', 'Cẩm Long', 'Cam Long', 'Xã Cẩm Long', 'Cam Long Commune', 'cam_long', '390', 10),
 ('15175', 'Cẩm Yên', 'Cam Yen', 'Xã Cẩm Yên', 'Cam Yen Commune', 'cam_yen', '390', 10),
@@ -6691,8 +6649,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('16873', 'Nậm Càn', 'Nam Can', 'Xã Nậm Càn', 'Nam Can Commune', 'nam_can', '417', 10),
 ('16876', 'Thạch Giám', 'Thach Giam', 'Thị trấn Thạch Giám', 'Thach Giam Township', 'thach_giam', '418', 9),
 ('16879', 'Mai Sơn', 'Mai Son', 'Xã Mai Sơn', 'Mai Son Commune', 'mai_son', '418', 10),
-('16882', 'Nhôn Mai', 'Nhon Mai', 'Xã Nhôn Mai', 'Nhon Mai Commune', 'nhon_mai', '418', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('16882', 'Nhôn Mai', 'Nhon Mai', 'Xã Nhôn Mai', 'Nhon Mai Commune', 'nhon_mai', '418', 10),
 ('16885', 'Hữu Khuông', 'Huu Khuong', 'Xã Hữu Khuông', 'Huu Khuong Commune', 'huu_khuong', '418', 10),
 ('16900', 'Yên Tĩnh', 'Yen Tinh', 'Xã Yên Tĩnh', 'Yen Tinh Commune', 'yen_tinh', '418', 10),
 ('16903', 'Nga My', 'Nga My', 'Xã Nga My', 'Nga My Commune', 'nga_my', '418', 10),
@@ -6712,7 +6669,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('16942', 'Nghĩa Mai', 'Nghia Mai', 'Xã Nghĩa Mai', 'Nghia Mai Commune', 'nghia_mai', '419', 10),
 ('16945', 'Nghĩa Yên', 'Nghia Yen', 'Xã Nghĩa Yên', 'Nghia Yen Commune', 'nghia_yen', '419', 10),
 ('16948', 'Nghĩa Lạc', 'Nghia Lac', 'Xã Nghĩa Lạc', 'Nghia Lac Commune', 'nghia_lac', '419', 10),
-('16951', 'Nghĩa Lâm', 'Nghia Lam', 'Xã Nghĩa Lâm', 'Nghia Lam Commune', 'nghia_lam', '419', 10),
+('16951', 'Nghĩa Lâm', 'Nghia Lam', 'Xã Nghĩa Lâm', 'Nghia Lam Commune', 'nghia_lam', '419', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('16954', 'Nghĩa Sơn', 'Nghia Son', 'Xã Nghĩa Sơn', 'Nghia Son Commune', 'nghia_son', '419', 10),
 ('16957', 'Nghĩa Lợi', 'Nghia Loi', 'Xã Nghĩa Lợi', 'Nghia Loi Commune', 'nghia_loi', '419', 10),
 ('16960', 'Nghĩa Bình', 'Nghia Binh', 'Xã Nghĩa Bình', 'Nghia Binh Commune', 'nghia_binh', '419', 10),
@@ -7215,8 +7173,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('18565', 'Ngọc Sơn', 'Ngoc Son', 'Xã Ngọc Sơn', 'Ngoc Son Commune', 'ngoc_son', '445', 10),
 ('18568', 'Lộc Hà', 'Loc Ha', 'Thị trấn Lộc Hà', 'Loc Ha Township', 'loc_ha', '448', 9),
 ('18571', 'Thạch Hải', 'Thach Hai', 'Xã Thạch Hải', 'Thach Hai Commune', 'thach_hai', '445', 10),
-('18577', 'Thạch Mỹ', 'Thach My', 'Xã Thạch Mỹ', 'Thach My Commune', 'thach_my', '448', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('18577', 'Thạch Mỹ', 'Thach My', 'Xã Thạch Mỹ', 'Thach My Commune', 'thach_my', '448', 10),
 ('18580', 'Thạch Kim', 'Thach Kim', 'Xã Thạch Kim', 'Thach Kim Commune', 'thach_kim', '448', 10),
 ('18583', 'Thạch Châu', 'Thach Chau', 'Xã Thạch Châu', 'Thach Chau Commune', 'thach_chau', '448', 10),
 ('18586', 'Thạch Kênh', 'Thach Kenh', 'Xã Thạch Kênh', 'Thach Kenh Commune', 'thach_kenh', '445', 10),
@@ -7235,7 +7192,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('18634', 'Lưu Vĩnh Sơn', 'Luu Vinh Son', 'Xã Lưu Vĩnh Sơn', 'Luu Vinh Son Commune', 'luu_vinh_son', '445', 10),
 ('18637', 'Thạch Thắng', 'Thach Thang', 'Xã Thạch Thắng', 'Thach Thang Commune', 'thach_thang', '445', 10),
 ('18643', 'Thạch Đài', 'Thach Dai', 'Xã Thạch Đài', 'Thach Dai Commune', 'thach_dai', '445', 10),
-('18649', 'Thạch Hội', 'Thach Hoi', 'Xã Thạch Hội', 'Thach Hoi Commune', 'thach_hoi', '445', 10),
+('18649', 'Thạch Hội', 'Thach Hoi', 'Xã Thạch Hội', 'Thach Hoi Commune', 'thach_hoi', '445', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('18652', 'Tân Lâm Hương', 'Tan Lam Huong', 'Xã Tân Lâm Hương', 'Tan Lam Huong Commune', 'tan_lam_huong', '445', 10),
 ('18658', 'Thạch Xuân', 'Thach Xuan', 'Xã Thạch Xuân', 'Thach Xuan Commune', 'thach_xuan', '445', 10),
 ('18667', 'Nam Điền', 'Nam Dien', 'Xã Nam Điền', 'Nam Dien Commune', 'nam_dien', '445', 10),
@@ -7749,8 +7707,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('20281', 'An Hải Đông', 'An Hai Dong', 'Phường An Hải Đông', 'An Hai Dong Ward', 'an_hai_dong', '493', 8),
 ('20284', 'Mỹ An', 'My An', 'Phường Mỹ An', 'My An Ward', 'my_an', '494', 8),
 ('20285', 'Khuê Mỹ', 'Khue My', 'Phường Khuê Mỹ', 'Khue My Ward', 'khue_my', '494', 8),
-('20287', 'Hoà Quý', 'Hoa Quy', 'Phường Hoà Quý', 'Hoa Quy Ward', 'hoa_quy', '494', 8);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('20287', 'Hoà Quý', 'Hoa Quy', 'Phường Hoà Quý', 'Hoa Quy Ward', 'hoa_quy', '494', 8),
 ('20290', 'Hoà Hải', 'Hoa Hai', 'Phường Hoà Hải', 'Hoa Hai Ward', 'hoa_hai', '494', 8),
 ('20293', 'Hòa Bắc', 'Hoa Bac', 'Xã Hòa Bắc', 'Hoa Bac Commune', 'hoa_bac', '497', 10),
 ('20296', 'Hòa Liên', 'Hoa Lien', 'Xã Hòa Liên', 'Hoa Lien Commune', 'hoa_lien', '497', 10),
@@ -7770,7 +7727,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('20332', 'Hòa Khương', 'Hoa Khuong', 'Xã Hòa Khương', 'Hoa Khuong Commune', 'hoa_khuong', '497', 10),
 ('20335', 'Tân Thạnh', 'Tan Thanh', 'Phường Tân Thạnh', 'Tan Thanh Ward', 'tan_thanh', '502', 8),
 ('20338', 'Phước Hòa', 'Phuoc Hoa', 'Phường Phước Hòa', 'Phuoc Hoa Ward', 'phuoc_hoa', '502', 8),
-('20341', 'An Mỹ', 'An My', 'Phường An Mỹ', 'An My Ward', 'an_my', '502', 8),
+('20341', 'An Mỹ', 'An My', 'Phường An Mỹ', 'An My Ward', 'an_my', '502', 8);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('20344', 'Hòa Hương', 'Hoa Huong', 'Phường Hòa Hương', 'Hoa Huong Ward', 'hoa_huong', '502', 8),
 ('20347', 'An Xuân', 'An Xuan', 'Phường An Xuân', 'An Xuan Ward', 'an_xuan', '502', 8),
 ('20350', 'An Sơn', 'An Son', 'Phường An Sơn', 'An Son Ward', 'an_son', '502', 8),
@@ -8286,8 +8244,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('21841', 'Vĩnh An', 'Vinh An', 'Xã Vĩnh An', 'Vinh An Commune', 'vinh_an', '547', 10),
 ('21844', 'Tây Xuân', 'Tay Xuan', 'Xã Tây Xuân', 'Tay Xuan Commune', 'tay_xuan', '547', 10),
 ('21847', 'Bình Nghi', 'Binh Nghi', 'Xã Bình Nghi', 'Binh Nghi Commune', 'binh_nghi', '547', 10),
-('21850', 'Tây Phú', 'Tay Phu', 'Xã Tây Phú', 'Tay Phu Commune', 'tay_phu', '547', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('21850', 'Tây Phú', 'Tay Phu', 'Xã Tây Phú', 'Tay Phu Commune', 'tay_phu', '547', 10),
 ('21853', 'Ngô Mây', 'Ngo May', 'Thị trấn Ngô Mây', 'Ngo May Township', 'ngo_may', '548', 9),
 ('21856', 'Cát Sơn', 'Cat Son', 'Xã Cát Sơn', 'Cat Son Commune', 'cat_son', '548', 10),
 ('21859', 'Cát Minh', 'Cat Minh', 'Xã Cát Minh', 'Cat Minh Commune', 'cat_minh', '548', 10),
@@ -8307,7 +8264,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('21901', 'Cát Thắng', 'Cat Thang', 'Xã Cát Thắng', 'Cat Thang Commune', 'cat_thang', '548', 10),
 ('21904', 'Cát Chánh', 'Cat Chanh', 'Xã Cát Chánh', 'Cat Chanh Commune', 'cat_chanh', '548', 10),
 ('21907', 'Bình Định', 'Binh Dinh', 'Phường Bình Định', 'Binh Dinh Ward', 'binh_dinh', '549', 8),
-('21910', 'Đập Đá', 'Dap Da', 'Phường Đập Đá', 'Dap Da Ward', 'dap_da', '549', 8),
+('21910', 'Đập Đá', 'Dap Da', 'Phường Đập Đá', 'Dap Da Ward', 'dap_da', '549', 8);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('21913', 'Nhơn Mỹ', 'Nhon My', 'Xã Nhơn Mỹ', 'Nhon My Commune', 'nhon_my', '549', 10),
 ('21916', 'Nhơn Thành', 'Nhon Thanh', 'Phường Nhơn Thành', 'Nhon Thanh Ward', 'nhon_thanh', '549', 8),
 ('21919', 'Nhơn Hạnh', 'Nhon Hanh', 'Xã Nhơn Hạnh', 'Nhon Hanh Commune', 'nhon_hanh', '549', 10),
@@ -8818,8 +8776,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('23383', 'Đắk Dục', 'Dak Duc', 'Xã Đắk Dục', 'Dak Duc Commune', 'dak_duc', '611', 10),
 ('23386', 'Đắk Nông', 'Dak Nong', 'Xã Đắk Nông', 'Dak Nong Commune', 'dak_nong', '611', 10),
 ('23389', 'Đắk Xú', 'Dak Xu', 'Xã Đắk Xú', 'Dak Xu Commune', 'dak_xu', '611', 10),
-('23392', 'Đắk Kan', 'Dak Kan', 'Xã Đắk Kan', 'Dak Kan Commune', 'dak_kan', '611', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('23392', 'Đắk Kan', 'Dak Kan', 'Xã Đắk Kan', 'Dak Kan Commune', 'dak_kan', '611', 10),
 ('23395', 'Bờ Y', 'Bo Y', 'Xã Bờ Y', 'Bo Y Commune', 'bo_y', '611', 10),
 ('23398', 'Sa Loong', 'Sa Loong', 'Xã Sa Loong', 'Sa Loong Commune', 'sa_loong', '611', 10),
 ('23401', 'Đắk Tô', 'Dak To', 'Thị trấn Đắk Tô', 'Dak To Township', 'dak_to', '612', 9),
@@ -8839,7 +8796,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('23434', 'Kon Đào', 'Kon Dao', 'Xã Kon Đào', 'Kon Dao Commune', 'kon_dao', '612', 10),
 ('23437', 'Tân Cảnh', 'Tan Canh', 'Xã Tân Cảnh', 'Tan Canh Commune', 'tan_canh', '612', 10),
 ('23440', 'Diên Bình', 'Dien Binh', 'Xã Diên Bình', 'Dien Binh Commune', 'dien_binh', '612', 10),
-('23443', 'Pô Kô', 'Po Ko', 'Xã Pô Kô', 'Po Ko Commune', 'po_ko', '612', 10),
+('23443', 'Pô Kô', 'Po Ko', 'Xã Pô Kô', 'Po Ko Commune', 'po_ko', '612', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('23446', 'Tê Xăng', 'Te Xang', 'Xã Tê Xăng', 'Te Xang Commune', 'te_xang', '617', 10),
 ('23449', 'Văn Xuôi', 'Van Xuoi', 'Xã Văn Xuôi', 'Van Xuoi Commune', 'van_xuoi', '617', 10),
 ('23452', 'Đắk Nên', 'Dak Nen', 'Xã Đắk Nên', 'Dak Nen Commune', 'dak_nen', '613', 10),
@@ -9386,8 +9344,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('24841', 'Lộc Châu', 'Loc Chau', 'Xã Lộc Châu', 'Loc Chau Commune', 'loc_chau', '673', 10),
 ('24844', 'Đại Lào', 'Dai Lao', 'Xã Đại Lào', 'Dai Lao Commune', 'dai_lao', '673', 10),
 ('24846', 'Lạc Dương', 'Lac Duong', 'Thị trấn Lạc Dương', 'Lac Duong Township', 'lac_duong', '675', 9),
-('24847', 'Đạ Chais', 'Da Chais', 'Xã Đạ Chais', 'Da Chais Commune', 'da_chais', '675', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('24847', 'Đạ Chais', 'Da Chais', 'Xã Đạ Chais', 'Da Chais Commune', 'da_chais', '675', 10),
 ('24848', 'Đạ Nhim', 'Da Nhim', 'Xã Đạ Nhim', 'Da Nhim Commune', 'da_nhim', '675', 10),
 ('24850', 'Đưng KNớ', 'Dung KNo', 'Xã Đưng KNớ', 'Dung KNo Commune', 'dung_kno', '675', 10),
 ('24853', 'Đạ Tông', 'Da Tong', 'Xã Đạ Tông', 'Da Tong Commune', 'da_tong', '674', 10),
@@ -9406,7 +9363,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('24889', 'Đạ K\' Nàng', 'Da K\' Nang', 'Xã Đạ K\' Nàng', 'Da K\' Nang Commune', 'da_k\'_nang', '674', 10),
 ('24892', 'Mê Linh', 'Me Linh', 'Xã Mê Linh', 'Me Linh Commune', 'me_linh', '676', 10),
 ('24895', 'Đạ Đờn', 'Da Don', 'Xã Đạ Đờn', 'Da Don Commune', 'da_don', '676', 10),
-('24898', 'Phúc Thọ', 'Phuc Tho', 'Xã Phúc Thọ', 'Phuc Tho Commune', 'phuc_tho', '676', 10),
+('24898', 'Phúc Thọ', 'Phuc Tho', 'Xã Phúc Thọ', 'Phuc Tho Commune', 'phuc_tho', '676', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('24901', 'Đông Thanh', 'Dong Thanh', 'Xã Đông Thanh', 'Dong Thanh Commune', 'dong_thanh', '676', 10),
 ('24904', 'Gia Lâm', 'Gia Lam', 'Xã Gia Lâm', 'Gia Lam Commune', 'gia_lam', '676', 10),
 ('24907', 'Tân Thanh', 'Tan Thanh', 'Xã Tân Thanh', 'Tan Thanh Commune', 'tan_thanh', '676', 10),
@@ -9924,8 +9882,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('26365', 'Lâm San', 'Lam San', 'Xã Lâm San', 'Lam San Commune', 'lam_san', '739', 10),
 ('26368', 'Long Thành', 'Long Thanh', 'Thị trấn Long Thành', 'Long Thanh Township', 'long_thanh', '740', 9),
 ('26371', 'An Hòa', 'An Hoa', 'Phường An Hòa', 'An Hoa Ward', 'an_hoa', '731', 8),
-('26374', 'Tam Phước', 'Tam Phuoc', 'Phường Tam Phước', 'Tam Phuoc Ward', 'tam_phuoc', '731', 8);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('26374', 'Tam Phước', 'Tam Phuoc', 'Phường Tam Phước', 'Tam Phuoc Ward', 'tam_phuoc', '731', 8),
 ('26377', 'Phước Tân', 'Phuoc Tan', 'Phường Phước Tân', 'Phuoc Tan Ward', 'phuoc_tan', '731', 8),
 ('26380', 'Long Hưng', 'Long Hung', 'Xã Long Hưng', 'Long Hung Commune', 'long_hung', '731', 10),
 ('26383', 'An Phước', 'An Phuoc', 'Xã An Phước', 'An Phuoc Commune', 'an_phuoc', '740', 10),
@@ -9944,7 +9901,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('26425', 'Gia Ray', 'Gia Ray', 'Thị trấn Gia Ray', 'Gia Ray Township', 'gia_ray', '741', 9),
 ('26428', 'Xuân Bắc', 'Xuan Bac', 'Xã Xuân Bắc', 'Xuan Bac Commune', 'xuan_bac', '741', 10),
 ('26431', 'Suối Cao', 'Suoi Cao', 'Xã Suối Cao', 'Suoi Cao Commune', 'suoi_cao', '741', 10),
-('26434', 'Xuân Thành', 'Xuan Thanh', 'Xã Xuân Thành', 'Xuan Thanh Commune', 'xuan_thanh', '741', 10),
+('26434', 'Xuân Thành', 'Xuan Thanh', 'Xã Xuân Thành', 'Xuan Thanh Commune', 'xuan_thanh', '741', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('26437', 'Xuân Thọ', 'Xuan Tho', 'Xã Xuân Thọ', 'Xuan Tho Commune', 'xuan_tho', '741', 10),
 ('26440', 'Xuân Trường', 'Xuan Truong', 'Xã Xuân Trường', 'Xuan Truong Commune', 'xuan_truong', '741', 10),
 ('26443', 'Xuân Hòa', 'Xuan Hoa', 'Xã Xuân Hòa', 'Xuan Hoa Commune', 'xuan_hoa', '741', 10),
@@ -10499,8 +10457,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('28078', 'Tân Bình', 'Tan Binh', 'Xã Tân Bình', 'Tan Binh Commune', 'tan_binh', '805', 10),
 ('28084', 'Quê Mỹ Thạnh', 'Que My Thanh', 'Xã Quê Mỹ Thạnh', 'Que My Thanh Commune', 'que_my_thanh', '805', 10),
 ('28087', 'Lạc Tấn', 'Lac Tan', 'Xã Lạc Tấn', 'Lac Tan Commune', 'lac_tan', '805', 10),
-('28090', 'Bình Trinh Đông', 'Binh Trinh Dong', 'Xã Bình Trinh Đông', 'Binh Trinh Dong Commune', 'binh_trinh_dong', '805', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('28090', 'Bình Trinh Đông', 'Binh Trinh Dong', 'Xã Bình Trinh Đông', 'Binh Trinh Dong Commune', 'binh_trinh_dong', '805', 10),
 ('28093', 'Tân Phước Tây', 'Tan Phuoc Tay', 'Xã Tân Phước Tây', 'Tan Phuoc Tay Commune', 'tan_phuoc_tay', '805', 10),
 ('28096', 'Bình Lãng', 'Binh Lang', 'Xã Bình Lãng', 'Binh Lang Commune', 'binh_lang', '805', 10),
 ('28099', 'Bình Tịnh', 'Binh Tinh', 'Xã Bình Tịnh', 'Binh Tinh Commune', 'binh_tinh', '805', 10),
@@ -10518,7 +10475,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('28135', 'Mỹ Lệ', 'My Le', 'Xã Mỹ Lệ', 'My Le Commune', 'my_le', '806', 10),
 ('28138', 'Tân Lân', 'Tan Lan', 'Xã Tân Lân', 'Tan Lan Commune', 'tan_lan', '806', 10),
 ('28141', 'Phước Tuy', 'Phuoc Tuy', 'Xã Phước Tuy', 'Phuoc Tuy Commune', 'phuoc_tuy', '806', 10),
-('28144', 'Long Hựu Đông', 'Long Huu Dong', 'Xã Long Hựu Đông', 'Long Huu Dong Commune', 'long_huu_dong', '806', 10),
+('28144', 'Long Hựu Đông', 'Long Huu Dong', 'Xã Long Hựu Đông', 'Long Huu Dong Commune', 'long_huu_dong', '806', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('28147', 'Tân Ân', 'Tan An', 'Xã Tân Ân', 'Tan An Commune', 'tan_an', '806', 10),
 ('28150', 'Phước Đông', 'Phuoc Dong', 'Xã Phước Đông', 'Phuoc Dong Commune', 'phuoc_dong', '806', 10),
 ('28153', 'Long Hựu Tây', 'Long Huu Tay', 'Xã Long Hựu Tây', 'Long Huu Tay Commune', 'long_huu_tay', '806', 10),
@@ -11034,8 +10992,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('29680', 'Trung Thành Tây', 'Trung Thanh Tay', 'Xã Trung Thành Tây', 'Trung Thanh Tay Commune', 'trung_thanh_tay', '859', 10),
 ('29683', 'Trung Hiệp', 'Trung Hiep', 'Xã Trung Hiệp', 'Trung Hiep Commune', 'trung_hiep', '859', 10),
 ('29686', 'Hiếu Phụng', 'Hieu Phung', 'Xã Hiếu Phụng', 'Hieu Phung Commune', 'hieu_phung', '859', 10),
-('29689', 'Trung Thành Đông', 'Trung Thanh Dong', 'Xã Trung Thành Đông', 'Trung Thanh Dong Commune', 'trung_thanh_dong', '859', 10);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('29689', 'Trung Thành Đông', 'Trung Thanh Dong', 'Xã Trung Thành Đông', 'Trung Thanh Dong Commune', 'trung_thanh_dong', '859', 10),
 ('29692', 'Trung Thành', 'Trung Thanh', 'Xã Trung Thành', 'Trung Thanh Commune', 'trung_thanh', '859', 10),
 ('29695', 'Trung Hiếu', 'Trung Hieu', 'Xã Trung Hiếu', 'Trung Hieu Commune', 'trung_hieu', '859', 10),
 ('29698', 'Trung Ngãi', 'Trung Ngai', 'Xã Trung Ngãi', 'Trung Ngai Commune', 'trung_ngai', '859', 10),
@@ -11053,7 +11010,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('29734', 'Hoà Lộc', 'Hoa Loc', 'Xã Hoà Lộc', 'Hoa Loc Commune', 'hoa_loc', '860', 10),
 ('29737', 'Phú Lộc', 'Phu Loc', 'Xã Phú Lộc', 'Phu Loc Commune', 'phu_loc', '860', 10),
 ('29740', 'Song Phú', 'Song Phu', 'Xã Song Phú', 'Song Phu Commune', 'song_phu', '860', 10),
-('29743', 'Hòa Hiệp', 'Hoa Hiep', 'Xã Hòa Hiệp', 'Hoa Hiep Commune', 'hoa_hiep', '860', 10),
+('29743', 'Hòa Hiệp', 'Hoa Hiep', 'Xã Hòa Hiệp', 'Hoa Hiep Commune', 'hoa_hiep', '860', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('29746', 'Mỹ Lộc', 'My Loc', 'Xã Mỹ Lộc', 'My Loc Commune', 'my_loc', '860', 10),
 ('29749', 'Tân Phú', 'Tan Phu', 'Xã Tân Phú', 'Tan Phu Commune', 'tan_phu', '860', 10),
 ('29752', 'Long Phú', 'Long Phu', 'Xã Long Phú', 'Long Phu Commune', 'long_phu', '860', 10),
@@ -11560,8 +11518,7 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('31171', 'Trà Nóc', 'Tra Noc', 'Phường Trà Nóc', 'Tra Noc Ward', 'tra_noc', '918', 8),
 ('31174', 'Thới An Đông', 'Thoi An Dong', 'Phường Thới An Đông', 'Thoi An Dong Ward', 'thoi_an_dong', '918', 8),
 ('31177', 'An Thới', 'An Thoi', 'Phường An Thới', 'An Thoi Ward', 'an_thoi', '918', 8),
-('31178', 'Bùi Hữu Nghĩa', 'Bui Huu Nghia', 'Phường Bùi Hữu Nghĩa', 'Bui Huu Nghia Ward', 'bui_huu_nghia', '918', 8);
-INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
+('31178', 'Bùi Hữu Nghĩa', 'Bui Huu Nghia', 'Phường Bùi Hữu Nghĩa', 'Bui Huu Nghia Ward', 'bui_huu_nghia', '918', 8),
 ('31180', 'Long Hòa', 'Long Hoa', 'Phường Long Hòa', 'Long Hoa Ward', 'long_hoa', '918', 8),
 ('31183', 'Long Tuyền', 'Long Tuyen', 'Phường Long Tuyền', 'Long Tuyen Ward', 'long_tuyen', '918', 8),
 ('31186', 'Lê Bình', 'Le Binh', 'Phường Lê Bình', 'Le Binh Ward', 'le_binh', '919', 8),
@@ -11580,7 +11537,8 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('31217', 'Thạnh Hoà', 'Thanh Hoa', 'Phường Thạnh Hoà', 'Thanh Hoa Ward', 'thanh_hoa', '923', 8),
 ('31219', 'Trung Kiên', 'Trung Kien', 'Phường Trung Kiên', 'Trung Kien Ward', 'trung_kien', '923', 8),
 ('31222', 'Trung An', 'Trung An', 'Xã Trung An', 'Trung An Commune', 'trung_an', '925', 10),
-('31225', 'Trung Thạnh', 'Trung Thanh', 'Xã Trung Thạnh', 'Trung Thanh Commune', 'trung_thanh', '925', 10),
+('31225', 'Trung Thạnh', 'Trung Thanh', 'Xã Trung Thạnh', 'Trung Thanh Commune', 'trung_thanh', '925', 10);
+INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `code_name`, `district_code`, `administrative_unit_id`) VALUES
 ('31227', 'Tân Hưng', 'Tan Hung', 'Phường Tân Hưng', 'Tan Hung Ward', 'tan_hung', '923', 8),
 ('31228', 'Thuận Hưng', 'Thuan Hung', 'Phường Thuận Hưng', 'Thuan Hung Ward', 'thuan_hung', '923', 8),
 ('31231', 'Thanh An', 'Thanh An', 'Thị trấn Thanh An', 'Thanh An Township', 'thanh_an', '924', 9),
@@ -11972,42 +11930,42 @@ INSERT INTO `wards` (`code`, `name`, `name_en`, `full_name`, `full_name_en`, `co
 ('32248', 'Đất Mũi', 'Dat Mui', 'Xã Đất Mũi', 'Dat Mui Commune', 'dat_mui', '973', 10);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `administrative_regions`
+-- Indexes for table `administrative_regions`
 --
 ALTER TABLE `administrative_regions`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `administrative_units`
+-- Indexes for table `administrative_units`
 --
 ALTER TABLE `administrative_units`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `booking_information`
+-- Indexes for table `booking_information`
 --
 ALTER TABLE `booking_information`
   ADD PRIMARY KEY (`id`),
   ADD KEY `booking_information_rooms_id_foreign` (`rooms_id`);
 
 --
--- Chỉ mục cho bảng `category_news`
+-- Indexes for table `category_news`
 --
 ALTER TABLE `category_news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `category_rooms`
+-- Indexes for table `category_rooms`
 --
 ALTER TABLE `category_rooms`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `comment_news`
+-- Indexes for table `comment_news`
 --
 ALTER TABLE `comment_news`
   ADD PRIMARY KEY (`id`),
@@ -12015,7 +11973,7 @@ ALTER TABLE `comment_news`
   ADD KEY `comment_news_author_id_foreign` (`author_id`);
 
 --
--- Chỉ mục cho bảng `comment_rooms`
+-- Indexes for table `comment_rooms`
 --
 ALTER TABLE `comment_rooms`
   ADD PRIMARY KEY (`id`),
@@ -12023,7 +11981,7 @@ ALTER TABLE `comment_rooms`
   ADD KEY `comment_rooms_author_id_foreign` (`author_id`);
 
 --
--- Chỉ mục cho bảng `districts`
+-- Indexes for table `districts`
 --
 ALTER TABLE `districts`
   ADD PRIMARY KEY (`code`),
@@ -12031,26 +11989,26 @@ ALTER TABLE `districts`
   ADD KEY `districts_province_code_fkey` (`province_code`);
 
 --
--- Chỉ mục cho bảng `failed_jobs`
+-- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Chỉ mục cho bảng `menus`
+-- Indexes for table `menus`
 --
 ALTER TABLE `menus`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `migrations`
+-- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `news`
+-- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`),
@@ -12058,26 +12016,26 @@ ALTER TABLE `news`
   ADD KEY `news_author_id_foreign` (`author_id`);
 
 --
--- Chỉ mục cho bảng `notifications`
+-- Indexes for table `notifications`
 --
 ALTER TABLE `notifications`
   ADD PRIMARY KEY (`id`),
   ADD KEY `notifications_user_id_foreign` (`user_id`);
 
 --
--- Chỉ mục cho bảng `password_resets`
+-- Indexes for table `password_resets`
 --
 ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Chỉ mục cho bảng `password_reset_tokens`
+-- Indexes for table `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Chỉ mục cho bảng `personal_access_tokens`
+-- Indexes for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -12085,7 +12043,7 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Chỉ mục cho bảng `provinces`
+-- Indexes for table `provinces`
 --
 ALTER TABLE `provinces`
   ADD PRIMARY KEY (`code`),
@@ -12093,7 +12051,7 @@ ALTER TABLE `provinces`
   ADD KEY `provinces_administrative_unit_id_fkey` (`administrative_unit_id`);
 
 --
--- Chỉ mục cho bảng `rooms`
+-- Indexes for table `rooms`
 --
 ALTER TABLE `rooms`
   ADD PRIMARY KEY (`id`),
@@ -12101,7 +12059,7 @@ ALTER TABLE `rooms`
   ADD KEY `rooms_category_id_foreign` (`category_id`);
 
 --
--- Chỉ mục cho bảng `sessions`
+-- Indexes for table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`id`),
@@ -12109,20 +12067,20 @@ ALTER TABLE `sessions`
   ADD KEY `sessions_last_activity_index` (`last_activity`);
 
 --
--- Chỉ mục cho bảng `setting_fields`
+-- Indexes for table `setting_fields`
 --
 ALTER TABLE `setting_fields`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `users`
+-- Indexes for table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- Chỉ mục cho bảng `wards`
+-- Indexes for table `wards`
 --
 ALTER TABLE `wards`
   ADD PRIMARY KEY (`code`),
@@ -12130,152 +12088,152 @@ ALTER TABLE `wards`
   ADD KEY `wards_district_code_fkey` (`district_code`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `booking_information`
+-- AUTO_INCREMENT for table `booking_information`
 --
 ALTER TABLE `booking_information`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT cho bảng `category_news`
+-- AUTO_INCREMENT for table `category_news`
 --
 ALTER TABLE `category_news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `category_rooms`
+-- AUTO_INCREMENT for table `category_rooms`
 --
 ALTER TABLE `category_rooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT cho bảng `comment_news`
+-- AUTO_INCREMENT for table `comment_news`
 --
 ALTER TABLE `comment_news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT cho bảng `comment_rooms`
+-- AUTO_INCREMENT for table `comment_rooms`
 --
 ALTER TABLE `comment_rooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT cho bảng `failed_jobs`
+-- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `menus`
+-- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
--- AUTO_INCREMENT cho bảng `migrations`
+-- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT cho bảng `news`
+-- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT cho bảng `notifications`
+-- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
--- AUTO_INCREMENT cho bảng `personal_access_tokens`
+-- AUTO_INCREMENT for table `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `rooms`
+-- AUTO_INCREMENT for table `rooms`
 --
 ALTER TABLE `rooms`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
--- AUTO_INCREMENT cho bảng `setting_fields`
+-- AUTO_INCREMENT for table `setting_fields`
 --
 ALTER TABLE `setting_fields`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `users`
+-- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `booking_information`
+-- Constraints for table `booking_information`
 --
 ALTER TABLE `booking_information`
   ADD CONSTRAINT `booking_information_rooms_id_foreign` FOREIGN KEY (`rooms_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `comment_news`
+-- Constraints for table `comment_news`
 --
 ALTER TABLE `comment_news`
   ADD CONSTRAINT `comment_news_author_id_foreign` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `comment_news_news_id_foreign` FOREIGN KEY (`news_id`) REFERENCES `news` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `comment_rooms`
+-- Constraints for table `comment_rooms`
 --
 ALTER TABLE `comment_rooms`
   ADD CONSTRAINT `comment_rooms_rooms_id_foreign` FOREIGN KEY (`rooms_id`) REFERENCES `rooms` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `districts`
+-- Constraints for table `districts`
 --
 ALTER TABLE `districts`
   ADD CONSTRAINT `districts_administrative_unit_id_fkey` FOREIGN KEY (`administrative_unit_id`) REFERENCES `administrative_units` (`id`),
   ADD CONSTRAINT `districts_province_code_fkey` FOREIGN KEY (`province_code`) REFERENCES `provinces` (`code`);
 
 --
--- Các ràng buộc cho bảng `news`
+-- Constraints for table `news`
 --
 ALTER TABLE `news`
   ADD CONSTRAINT `news_author_id_foreign` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `news_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category_news` (`id`) ON DELETE SET NULL;
 
 --
--- Các ràng buộc cho bảng `notifications`
+-- Constraints for table `notifications`
 --
 ALTER TABLE `notifications`
   ADD CONSTRAINT `notifications_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `provinces`
+-- Constraints for table `provinces`
 --
 ALTER TABLE `provinces`
   ADD CONSTRAINT `provinces_administrative_region_id_fkey` FOREIGN KEY (`administrative_region_id`) REFERENCES `administrative_regions` (`id`),
   ADD CONSTRAINT `provinces_administrative_unit_id_fkey` FOREIGN KEY (`administrative_unit_id`) REFERENCES `administrative_units` (`id`);
 
 --
--- Các ràng buộc cho bảng `rooms`
+-- Constraints for table `rooms`
 --
 ALTER TABLE `rooms`
   ADD CONSTRAINT `rooms_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `category_rooms` (`id`) ON DELETE SET NULL,
   ADD CONSTRAINT `rooms_chutro_id_foreign` FOREIGN KEY (`chutro_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `wards`
+-- Constraints for table `wards`
 --
 ALTER TABLE `wards`
   ADD CONSTRAINT `wards_administrative_unit_id_fkey` FOREIGN KEY (`administrative_unit_id`) REFERENCES `administrative_units` (`id`),
